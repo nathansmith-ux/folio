@@ -2,6 +2,7 @@ import { OpenAI } from "openai";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
 import getCurrentWeather from "@/helpers/weather/getCurrentWeather";
+import getWeatherForecast from "@/helpers/weather/getWeatherForecast";
  
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -31,7 +32,9 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
     model: 'gpt-3.5-turbo-0125',
     provider: openai,
     messages: [
-      { role: 'system', content: 'You are a weather assistant, always call the get_current_weather function' },
+      { role: 'system', content: `You are a weather assistant, 
+      
+      Always return the get_weather_forecast function` },
       ...aiState.get()
     ],
     // `text` is called when an AI returns a text response (as opposed to a tool call).
@@ -65,6 +68,24 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
           const weatherInfo = await getCurrentWeather(weatherLocation)
 
           return <div><p>The weather for location {weatherLocation} is {weatherInfo.current.temp_c} degrees celcius with conditions {weatherInfo.current.condition.text} but it feels like {weatherInfo.current.feelslike_c}</p></div>
+        }
+      },
+      get_weather_forecast: {
+        description: 'Get the weather forecast over a number of days',
+        parameters: z.object({
+          numberOfDays: z.number().describe('The number of days the user wants the weather for max 3'),
+          weatherLocation: z.string().describe('The location that the user wants the weather for')
+        }).required(),
+        render: async function* ({ numberOfDays, weatherLocation }) {
+
+          yield <div>
+            <p>Loading...</p>
+          </div>
+
+          const weatherInfo = await getWeatherForecast(numberOfDays, weatherLocation)
+
+          return <div><p>The weather forecast for location {weatherLocation} is</p></div>
+
         }
       }
     }
