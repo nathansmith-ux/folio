@@ -12,6 +12,12 @@ export default function NavBar({ className }: { className?: string }) {
       className={cn("fixed top-5 inset-x-0 max-w-2xl mx-auto z-50", className)}
     >
       <Menu setActive={setActive}>
+        <Link
+          href="/"
+          className="hover:text-slate-400"
+        >
+          Home
+        </Link>
         <MenuItem setActive={setActive} active={active} item="Services">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/web-dev">Web Development</HoveredLink>
