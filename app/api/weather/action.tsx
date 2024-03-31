@@ -3,6 +3,10 @@ import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
 import getCurrentWeather from "@/helpers/weather/getCurrentWeather";
 import getWeatherForecast from "@/helpers/weather/getWeatherForecast";
+
+import CurrentWeatherCard from "@/components/ui/weather/CurrentWeatherCard";
+import CurrentWeatherCardSkeleton from "@/components/ui/loading/CurrentWeatherCardSkeleton";
+import Spinner from "@/components/ui/loading/Spinner";
  
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -61,13 +65,30 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
           weatherLocation: z.string().describe('the location that the user wants the weather for')
         }).required(),
         render: async function* ({ weatherLocation }) {
-          yield <div>
-            <p>Loading...</p>
-          </div>
+          yield <div className="flex justify-center">
+            <CurrentWeatherCardSkeleton />
+            </div>
 
           const weatherInfo = await getCurrentWeather(weatherLocation)
 
-          return <div><p>The weather for location {weatherLocation} is {weatherInfo.current.temp_c} degrees celcius with conditions {weatherInfo.current.condition.text} but it feels like {weatherInfo.current.feelslike_c}</p></div>
+          const image = await openai.images.generate({
+            model: "dall-e-2",
+            prompt: `A unique landmark for ${weatherLocation}`
+          })
+
+          return(
+            <div className="flex justify-center">
+              <CurrentWeatherCard 
+                location={weatherLocation}
+                image={image.data[0].url}
+                celcius={weatherInfo.current.temp_c}
+                fahrenheit={weatherInfo.current.temp_f}
+                conditions={weatherInfo.current.condition.text}
+                feelsLikeCelcius={weatherInfo.current.feelslike_c}
+                feelsLikeFahrenheit={weatherInfo.current.feelslike_f}
+              />
+            </div>
+          )
         }
       },
       get_weather_forecast: {
