@@ -1,39 +1,18 @@
 import { OpenAI } from "openai";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
+import getCurrentWeather from "@/helpers/weather/getCurrentWeather";
  
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
- 
-// An example of a spinner component. You can also import your own components,
-// or 3rd party component libraries.
-function Spinner() {
-  return <div>Loading...</div>;
+
+type SubmitUserMessageResponse = {
+  id: number
+  display: React.ReactNode;
 }
  
-// An example of a flight card component.
-function FlightCard({ flightInfo }) {
-  return (
-    <div>
-      <h2>Flight Information</h2>
-      <p>Flight Number: {flightInfo.flightNumber}</p>
-      <p>Departure: {flightInfo.departure}</p>
-      <p>Arrival: {flightInfo.arrival}</p>
-    </div>
-  );
-}
- 
-// An example of a function that fetches flight information from an external API.
-async function getFlightInfo(flightNumber: string) {
-  return {
-    flightNumber,
-    departure: 'New York',
-    arrival: 'San Francisco',
-  };
-}
- 
-async function submitUserMessage(userInput: string) {
+async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
   'use server';
  
   const aiState = getMutableAIState<typeof AI>();
@@ -52,7 +31,7 @@ async function submitUserMessage(userInput: string) {
     model: 'gpt-3.5-turbo-0125',
     provider: openai,
     messages: [
-      { role: 'system', content: 'You are a flight assistant' },
+      { role: 'system', content: 'You are a weather assistant, always call the get_current_weather function' },
       ...aiState.get()
     ],
     // `text` is called when an AI returns a text response (as opposed to a tool call).
@@ -73,31 +52,19 @@ async function submitUserMessage(userInput: string) {
       return <p>{content}</p>
     },
     tools: {
-      get_flight_info: {
-        description: 'Get the information for a flight',
+      get_current_weather: {
+        description: 'Get the latest weather updates',
         parameters: z.object({
-          flightNumber: z.string().describe('the number of the flight')
+          weatherLocation: z.string().describe('the location that the user wants the weather for')
         }).required(),
-        render: async function* ({ flightNumber }) {
-          // Show a spinner on the client while we wait for the response.
-          yield <Spinner/>
- 
-          // Fetch the flight information from an external API.
-          const flightInfo = await getFlightInfo(flightNumber)
- 
-          // Update the final AI state.
-          aiState.done([
-            ...aiState.get(),
-            {
-              role: "function",
-              name: "get_flight_info",
-              // Content can be any string to provide context to the LLM in the rest of the conversation.
-              content: JSON.stringify(flightInfo),
-            }
-          ]);
- 
-          // Return the flight card to the client.
-          return <FlightCard flightInfo={flightInfo} />
+        render: async function* ({ weatherLocation }) {
+          yield <div>
+            <p>Loading...</p>
+          </div>
+
+          const weatherInfo = await getCurrentWeather(weatherLocation)
+
+          return <div><p>The weather for location {weatherLocation} is {weatherInfo.current.temp_c} degrees celcius with conditions {weatherInfo.current.condition.text} but it feels like {weatherInfo.current.feelslike_c}</p></div>
         }
       }
     }

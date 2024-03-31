@@ -14,7 +14,7 @@ export default function Page() {
     <div>
       {
         // View messages in UI state
-        messages.map((message) => (
+        messages.map((message: any) => (
           <div key={message.id}>
             {message.display}
           </div>
@@ -25,7 +25,7 @@ export default function Page() {
         e.preventDefault();
  
         // Add user message to UI state
-        setMessages((currentMessages) => [
+        setMessages((currentMessages: any) => [
           ...currentMessages,
           {
             id: Date.now(),
@@ -35,7 +35,7 @@ export default function Page() {
  
         // Submit and get response message
         const responseMessage = await submitUserMessage(inputValue);
-        setMessages((currentMessages) => [
+        setMessages((currentMessages: any) => [
           ...currentMessages,
           responseMessage,
         ]);
