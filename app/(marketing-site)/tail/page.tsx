@@ -2,7 +2,7 @@ import HeroWImage from "@/components/ui/hero/HeroWImage"
 
 export default function TailPage() {
   return (
-    <main className="pt-16">
+    <main className="pt-24">
       <HeroWImage 
         image="/tail-assets/what-is-tail.webp"
         header="Meet TaiL"

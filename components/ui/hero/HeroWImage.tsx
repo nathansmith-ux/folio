@@ -38,7 +38,7 @@ export default function HeroWImage({ image, header, description, ctaOne, ctaTwo,
           <div className="aspect-wrapper aspect-square rounded-xl overflow-hidden lg:aspect-none lg:rounded-lg">
             <Image
               alt="Hero image"
-              className="aspect object-cover"
+              className="aspect object-cover rounded-lg"
               height="600"
               src={image}
               style={{
