@@ -6,7 +6,9 @@ import getWeatherForecast from "@/helpers/weather/getWeatherForecast";
 
 import CurrentWeatherCard from "@/components/ui/weather/CurrentWeatherCard";
 import CurrentWeatherCardSkeleton from "@/components/ui/loading/CurrentWeatherCardSkeleton";
-import Spinner from "@/components/ui/loading/Spinner";
+
+import ForecastWeatherCard from "@/components/ui/weather/ForecastWeatherCard";
+import ForecastWeatherCardSkeleton from "@/components/ui/loading/ForecastWeatherCardSkeleton";
  
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -16,6 +18,23 @@ type SubmitUserMessageResponse = {
   id: number
   display: React.ReactNode;
 }
+
+enum TabName {
+  About = 'about',
+  Services = 'services',
+  Statistics = 'statistics',
+}
+
+type TabData = {
+  name: TabName;
+  content: JSX.Element;
+};
+
+const tabs: TabData[] = [
+  { name: TabName.About, content: <p>Hello There about</p> },
+  { name: TabName.Services, content: <p>Hello There services</p> },
+  { name: TabName.Statistics, content: <p>Hello There statistics</p> },
+];
  
 async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
   'use server';
@@ -99,13 +118,17 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         }).required(),
         render: async function* ({ numberOfDays, weatherLocation }) {
 
-          yield <div>
-            <p>Loading...</p>
+          yield <div className="flex justify-center">
+            <ForecastWeatherCardSkeleton />
           </div>
 
           const weatherInfo = await getWeatherForecast(numberOfDays, weatherLocation)
 
-          return <div><p>The weather forecast for location {weatherLocation} is</p></div>
+          return <div>
+            <ForecastWeatherCard 
+              tabs={tabs}
+            />
+          </div>
 
         }
       }

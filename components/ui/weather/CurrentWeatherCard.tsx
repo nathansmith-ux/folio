@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 
 export default function CurrentWeatherCard({ 
   location,
@@ -10,13 +10,16 @@ export default function CurrentWeatherCard({
   feelsLikeFahrenheit
 } : {
   location: string,
-  image: string,
+  image: string | StaticImageData | undefined,
   celcius: number,
   fahrenheit: number,
   conditions: string,
   feelsLikeCelcius: number,
   feelsLikeFahrenheit: number
 }) {
+
+  const validImageSrc = image ?? '/navigation-assets/weather.webp';
+
   return (
     <div className="px-6 py-4 max-w-60 bg-gray-700 rounded-lg">
       <div className="flex flex-col items-center mb-2">
@@ -31,7 +34,7 @@ export default function CurrentWeatherCard({
             alt="Weather icon"
             className="rounded-full overflow-hidden"
             height="100"
-            src={image}
+            src={validImageSrc}
             style={{
               aspectRatio: "100/100",
               objectFit: "cover",
