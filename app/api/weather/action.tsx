@@ -57,7 +57,9 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
     messages: [
       { role: 'system', content: `You are a weather assistant, 
       
-      Always return the get_weather_forecast function` },
+      If the user asks for the current weather call get_current_weather
+
+      If the user asks for the weather forecast call get_weather_forecast` },
       ...aiState.get()
     ],
     // `text` is called when an AI returns a text response (as opposed to a tool call).
@@ -95,7 +97,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
             prompt: `A unique landmark for ${weatherLocation}`
           })
 
-          return(
+          return (
             <div className="flex justify-center">
               <CurrentWeatherCard 
                 location={weatherLocation}
@@ -124,11 +126,13 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           const weatherInfo = await getWeatherForecast(numberOfDays, weatherLocation)
 
-          return <div>
-            <ForecastWeatherCard 
-              tabs={tabs}
-            />
-          </div>
+          return (
+            <div>
+              <ForecastWeatherCard 
+                forecastday={weatherInfo.forecast.forecastday}
+              />
+            </div>
+          )
 
         }
       }

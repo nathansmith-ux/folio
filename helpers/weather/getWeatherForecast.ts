@@ -15,7 +15,7 @@ export default async function getWeatherForecast(numberOfDays: number, weatherLo
 
     const weatherData = await res.json();
 
-    console.log(weatherData);
+    console.log(weatherData.forecast.forecastday);
 
     return weatherData;
 
