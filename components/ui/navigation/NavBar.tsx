@@ -35,7 +35,7 @@ export default function NavBar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Generative UI">
-          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+          <div className="text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
               title="Weather"
               href="/generative-ui/weather"
@@ -62,12 +62,22 @@ export default function NavBar({ className }: { className?: string }) {
             />
           </div>
         </MenuItem>
-        <Link
-          href="/tail"
-          className="hover:text-slate-400"
-        >
-          Meet TaiL
-        </Link>
+        <MenuItem setActive={setActive} active={active} item="Projects">
+          <div className="text-sm grid grid-cols-2 gap-10 p-4">
+            <ProductItem
+              title="TaiL"
+              href="/projects/tail"
+              src="/tail-assets/what-is-tail.webp"
+              description="A generative AI platform that creates dynamic choose your own adventures games"
+            />
+            <ProductItem
+              title="Schema Forge"
+              href="/projects/schema-forge"
+              src="/schema-forge-assets/schema-forge.webp"
+              description="A SaaS product built to help SEOs generate structured data more efficiently"
+            />
+          </div>
+        </MenuItem>
         <Link
           href="/blog"
           className="hover:text-slate-400"
