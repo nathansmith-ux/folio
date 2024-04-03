@@ -7,6 +7,7 @@ import HeroWBullets from "@/components/ui/hero/HeroWBullets";
 import NavBar from "@/components/ui/navigation/NavBar";
 import Footer from "@/components/ui/footer/Footer";
 import { AuroraBackground } from "@/components/ui/background/AuraBackground";
+import { bulletPoints } from "@/site-copy/webDevPage";
 
 export default function WebDevPage() {  
   return (
@@ -25,7 +26,12 @@ export default function WebDevPage() {
         image="/cta/cta-image.webp"
       />
       <CardIconGrid />
-      <HeroWBullets />
+      <HeroWBullets 
+        image="/cta/minimalistic-hero.webp"
+        header="Web Solutions for Small Businesses"
+        description="Empowering small businesses with custom web applications designed for efficiency and growth"
+        bulletPoints={bulletPoints}
+      />
       <AuroraBackground>
         <TypeWriterCta />
       </AuroraBackground>

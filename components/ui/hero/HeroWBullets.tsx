@@ -1,6 +1,13 @@
 import Image from "next/image"
 
-export default function HeroWBullets() {
+export default function HeroWBullets({ 
+  image, header, description, bulletPoints 
+}: { 
+  image: string,
+  header: string,
+  description: string
+  bulletPoints: string[] 
+}) {
   return (
     <section className="w-full py-24 bg-orange-100 border border-black">
       <div className="container px-4 md:px-6 mx-auto">
@@ -9,36 +16,28 @@ export default function HeroWBullets() {
             alt="Hero"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-bottom sm:w-full lg:order-last lg:aspect-square"
             height="550"
-            src="/tail-assets/what-is-tail.webp"
+            src={image}
             width="550"
           />
           <div className="flex flex-col justify-center space-y-4">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                The complete platform for building the Web
-              </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                Give your team the toolkit to stop configuring and start innovating. Securely build, deploy, and scale
-                the best web experiences.
+            <div className="space-y-2 mb-4">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-4">
+                {header}
+              </h2>
+              <p className="max-w-[600px] text-gray-500 md:text-xl">
+                {description}
               </p>
             </div>
-            <ul className="grid gap-4 md:gap-2 list-disc text-gray-500 dark:text-gray-400">
-              <li className="flex items-start space-x-2">
-                <span className="inline-block h-4 w-4 rounded-full bg-gray-900" />
-                <span>Zero config</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="inline-block h-4 w-4 rounded-full bg-gray-900" />
-                <span>Instant deployment</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="inline-block h-4 w-4 rounded-full bg-gray-900" />
-                <span>Edge functions</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="inline-block h-4 w-4 rounded-full bg-gray-900" />
-                <span>Collaboration</span>
-              </li>
+            <ul className="space-y-2 text-gray-500">
+              {bulletPoints.map((point: string, index: number) => (
+                <li 
+                  className="flex items-start"
+                  key={index}
+                >
+                  <span className="inline-block h-3 w-4 rounded-full bg-blue-500 mr-2"/>
+                  <p>{point}</p>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
