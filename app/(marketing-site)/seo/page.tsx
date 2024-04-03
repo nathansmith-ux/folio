@@ -1,7 +1,9 @@
+import TextCentered from "@/components/ui/hero/TextCentered";
+
 export default function SeoPage() {
   return (
-    <div>
-      
-    </div>
+    <main>
+      <TextCentered />
+    </main>
   )
 }

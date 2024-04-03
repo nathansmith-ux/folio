@@ -1,3 +1,5 @@
+import Footer from "@/components/ui/footer/Footer";
+import NavBar from "@/components/ui/navigation/NavBar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -16,7 +18,9 @@ export default function MarketingSiteLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
