@@ -11,7 +11,7 @@ export default function HeroWImage({ image, header, description, ctaOne, ctaTwo,
   linkTwo: string,
 }) {
   return (
-    <section className="w-full py-32 bg-orange-100">
+    <section className="w-full py-32 bg-orange-100 border border-black">
       <div className="container px-4 mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-4">

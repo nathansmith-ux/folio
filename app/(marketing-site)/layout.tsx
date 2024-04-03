@@ -18,9 +18,7 @@ export default function MarketingSiteLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
         {children}
-        <Footer />
       </body>
     </html>
   );
