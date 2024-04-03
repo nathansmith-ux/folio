@@ -2,7 +2,6 @@
 
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -12,7 +11,6 @@ export const HoverEffect = ({
   items: {
     title: string;
     description: string;
-    link: string;
   }[];
   className?: string;
 }) => {
@@ -26,9 +24,8 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
+        <section
+          key={item?.title}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -54,7 +51,7 @@ export const HoverEffect = ({
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </Link>
+        </section>
       ))}
     </div>
   );
@@ -88,9 +85,9 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-black font-bold tracking-wide mt-4", className)}>
+    <h3 className={cn("text-black font-bold tracking-wide", className)}>
       {children}
-    </h4>
+    </h3>
   );
 };
 export const CardDescription = ({
@@ -103,7 +100,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-8 text-slate-800 tracking-wide leading-relaxed text-sm",
+        "mt-4 text-slate-800 tracking-wide leading-relaxed text-sm",
         className
       )}
     >

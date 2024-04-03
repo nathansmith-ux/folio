@@ -1,38 +1,34 @@
 export const services = [
   {
-    title: "Stripe",
-    description:
-      "A technology company that builds economic infrastructure for the internet.",
-    link: "https://stripe.com",
+    title: "Website Development",
+    description: "Creating responsive, brand-centric websites for a strong online presence."
   },
   {
-    title: "Netflix",
-    description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-    link: "https://netflix.com",
+    title: "E-commerce Site Development",
+    description: "Building seamless e-commerce platforms with user-friendly design and secure transactions."
   },
   {
-    title: "Google",
-    description:
-      "A multinational technology company that specializes in Internet-related services and products.",
-    link: "https://google.com",
+    title: "Content Site Development",
+    description: "Developing intuitive, content-rich websites for effective communication and audience engagement."
   },
   {
-    title: "Meta",
-    description:
-      "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
-    link: "https://meta.com",
+    title: "User Experience & Site Re-designs",
+    description: "Enhancing site usability and aesthetics for a superior and accessible user experience."
   },
   {
-    title: "Amazon",
-    description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-    link: "https://amazon.com",
+    title: "Domain Management",
+    description: "Secure and optimized domain management aligning with your digital business strategies."
   },
   {
-    title: "Microsoft",
-    description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-    link: "https://microsoft.com",
+    title: "Web Development Projects",
+    description: "Managing a range of web projects, focusing on custom, scalable, and innovative solutions."
   },
+  {
+    title: "Headless CMS Development",
+    description: "Creating flexible headless CMS systems for consistent multi-channel content distribution."
+  },
+  {
+    title: "Generative AI Integration for UIs and AI Services",
+    description: "Integrating generative AI for revolutionary, dynamic, and personalized user interfaces."
+  }
 ];

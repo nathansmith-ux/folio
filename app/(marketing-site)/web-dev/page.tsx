@@ -19,10 +19,16 @@ export default function WebDevPage() {
       <AuroraBackground>
         <CardGrid />
       </AuroraBackground>
-      <CtaImage />
+      <CtaImage 
+        header="Your Vision, Our Expertise - Let's Scale To New Heights Together"
+        description="Transform your vision into reality with our expertise in web development – let's create your digital masterpiece together"
+        image="/cta/cta-image.webp"
+      />
       <CardIconGrid />
       <HeroWBullets />
-      <TypeWriterCta />
+      <AuroraBackground>
+        <TypeWriterCta />
+      </AuroraBackground>
       <Footer />
     </main>
   )
