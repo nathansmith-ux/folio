@@ -5,6 +5,7 @@ import Footer from "@/components/ui/footer/Footer";
 import { TypeWriterCta } from "@/components/ui/cta/TypeWriterCta";
 import CtaImage from "@/components/ui/cta/CtaImage";
 import CardIconGrid from "@/components/ui/card/CardIconGrid";
+import HeroWBullets from "@/components/ui/hero/HeroWBullets";
 
 export default function WebDevPage() {  
   return (
@@ -14,6 +15,7 @@ export default function WebDevPage() {
       <CardGrid />
       <CtaImage />
       <CardIconGrid />
+      <HeroWBullets />
       <TypeWriterCta />
       <Footer />
     </main>
