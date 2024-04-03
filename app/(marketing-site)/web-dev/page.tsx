@@ -7,7 +7,7 @@ import HeroWBullets from "@/components/ui/hero/HeroWBullets";
 import NavBar from "@/components/ui/navigation/NavBar";
 import Footer from "@/components/ui/footer/Footer";
 import { AuroraBackground } from "@/components/ui/background/AuraBackground";
-import { bulletPoints } from "@/site-copy/webDevPage";
+import { bulletPoints, words, services } from "@/site-copy/webDevPage";
 
 export default function WebDevPage() {  
   return (
@@ -18,7 +18,9 @@ export default function WebDevPage() {
         description="We develop end-to-end solutions for small business owners to help you carve out your piece of the digital world"
       />
       <AuroraBackground>
-        <CardGrid />
+        <CardGrid 
+          services={services}
+        />
       </AuroraBackground>
       <CtaImage 
         header="Your Vision, Our Expertise - Let's Scale To New Heights Together"
@@ -33,7 +35,11 @@ export default function WebDevPage() {
         bulletPoints={bulletPoints}
       />
       <AuroraBackground>
-        <TypeWriterCta />
+        <TypeWriterCta
+          subtext="The road to a new digitial reach starts here" 
+          words={words}
+          cards={false}
+        />
       </AuroraBackground>
       <Footer />
     </main>

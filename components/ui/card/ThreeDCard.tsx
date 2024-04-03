@@ -1,7 +1,10 @@
 import { CardBody, CardContainer, CardItem } from "@/components/ui/card/ThreeDCardHelper";
 import ShopifyIcon from "../icons/ShopifyIcon";
-import ReactIcon from "../icons/ReactIcon"; // Import for React icon
-import WebflowIcon from "../icons/WebflowIcon"; // Import for Webflow icon
+import ReactIcon from "../icons/ReactIcon"; 
+import WebflowIcon from "../icons/WebflowIcon"; 
+import AhrefsIcon from "../icons/AhrefsIcon";
+import SurferSeoIcon from "../icons/SurferSeoIcon";
+import ScreamingFrogIcon from "../icons/ScreamingFrogIcon";
 
 export function ThreeDCard({ techStack }: { techStack: string }) {
   return (
@@ -44,6 +47,39 @@ export function ThreeDCard({ techStack }: { techStack: string }) {
             className="mt-2"
           >
             <WebflowIcon />
+          </CardItem>
+        )}
+
+        {techStack.toLowerCase() === "ahrefs" && (
+          <CardItem
+            translateZ="100"
+            rotateX={20}
+            rotateZ={-10}
+            className="mt-2"
+          >
+            <AhrefsIcon />
+          </CardItem>
+        )}
+
+        {techStack.toLowerCase() === "screamingfrog" && (
+          <CardItem
+            translateZ="100"
+            rotateX={20}
+            rotateZ={-10}
+            className="mt-2"
+          >
+            <ScreamingFrogIcon />
+          </CardItem>
+        )}
+
+        {techStack.toLowerCase() === "surferseo" && (
+          <CardItem
+            translateZ="100"
+            rotateX={20}
+            rotateZ={-10}
+            className="mt-2"
+          >
+            <SurferSeoIcon />
           </CardItem>
         )}
 

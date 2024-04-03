@@ -1,8 +1,8 @@
-import Link from "next/link"
 import ElevatorPitchButton from "../button/ElevatorPitchButton"
 import AboutMeButton from "../button/AboutMeButton"
 import ConsultationButton from "../button/ConsultationButton"
 import ThreeDCardGrid from "../card/ThreeDCardGrid"
+import { techStack } from "@/site-copy/webDevPage"
 
 export default function TextCentered({ header, description }: { header:string, description: string }) {
   return (
@@ -15,7 +15,10 @@ export default function TextCentered({ header, description }: { header:string, d
             <AboutMeButton />
             <ElevatorPitchButton />
         </div>
-        <ThreeDCardGrid />
+        <h2 className="text-gray-900 text-2xl mb-6">Built With Love Using</h2>
+        <ThreeDCardGrid 
+          techStacks={techStack}
+        />
     </div>
 </section>
   )

@@ -69,3 +69,28 @@ export const bulletPoints = [
   "Enhancing productivity and reducing operational costs with customized, efficient web applications",
   "Delivering a seamless, device-friendly user experience with responsive web design across all platforms"
 ]
+
+export const words = [
+  {
+    text: "Let's",
+  },
+  {
+    text: "build",
+  },
+  {
+    text: "amazing",
+  },
+  {
+    text: "websites",
+  },
+  {
+    text: "together.",
+    className: "text-blue-500 dark:text-blue-500",
+  },
+];
+
+export const techStack = [
+  "React",
+  "Webflow",
+  "Shopify"
+]
