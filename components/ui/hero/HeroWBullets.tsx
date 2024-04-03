@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function HeroWBullets() {
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-24 bg-orange-100 border border-black">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <Image

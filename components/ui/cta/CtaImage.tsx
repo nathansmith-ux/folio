@@ -3,7 +3,7 @@ import Link from "next/link"
 
 function CtaImage() {
   return (
-    <section className="bg-white dark:bg-gray-900 py-20 md:px-10">
+    <section className="bg-blue-500 py-20 md:px-10 border border-black">
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
           <Image 
             className="w-full dark:hidden" 

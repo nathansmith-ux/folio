@@ -16,7 +16,7 @@ export default function HeroWImage({ image, header, description, ctaOne, ctaTwo,
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold tracking-tight lg:text-5xl">{header}</h1>
-            <p className="text-gray-500 dark:text-gray-400">{description}
+            <p className="text-gray-500">{description}
             </p>
             <div className="flex gap-4 mt-6">
               <Link
