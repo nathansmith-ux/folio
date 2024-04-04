@@ -21,14 +21,13 @@ type TabData = {
     content: JSX.Element;
 };
 
-export default function ForecastWeatherCard({ forecastday }: { forecastday: ForecastDay[] }) {
+interface ForecastDayProps {
+    forecastday: ForecastDay[]
+}
+
+export default function ForecastWeatherCard({ forecastday }: ForecastDayProps) {
     const [activeTab, setActiveTab] = useState(forecastday[0].date);
     const [isCelsius, setIsCelsius] = useState(true); 
-
-    const formatTabName = (dateString: string) => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-    };
 
     const toggleTemperatureUnit = () => {
         setIsCelsius(!isCelsius);
@@ -57,7 +56,7 @@ export default function ForecastWeatherCard({ forecastday }: { forecastday: Fore
                                 className={`inline-block p-4 rounded-ss-lg ${activeTab === tab.name ? 'text-blue-600 dark:text-blue-500' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
                                 aria-selected={activeTab === tab.name}
                             >
-                                {formatTabName(tab.name)}
+                                {tab.name}
                             </button>
                         </li>
                     ))}
