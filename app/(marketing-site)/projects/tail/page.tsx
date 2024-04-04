@@ -7,7 +7,6 @@ import { process } from "@/site-copy/tailPage"
 export default function TailPage() {
   return (
     <main>
-      <NavBar />
       <HeroWImage 
         image="/tail-assets/what-is-tail.webp"
         header="Meet TaiL"
@@ -20,7 +19,6 @@ export default function TailPage() {
       <CardIconGrid 
         process={process}
       />
-      <Footer />
     </main>
   )
 }
