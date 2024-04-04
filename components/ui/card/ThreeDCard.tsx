@@ -6,7 +6,11 @@ import AhrefsIcon from "../icons/AhrefsIcon";
 import SurferSeoIcon from "../icons/SurferSeoIcon";
 import ScreamingFrogIcon from "../icons/ScreamingFrogIcon";
 
-export function ThreeDCard({ techStack }: { techStack: string }) {
+interface ThreeDCardProps {
+  techStack: string
+}
+
+export function ThreeDCard({ techStack }: ThreeDCardProps) {
   return (
     <CardContainer className="inter-var">
       <CardBody className="relative border-black bg-white h-24 lg:h-28 lg:w-40 rounded-xl p-2 border flex flex-col items-center md:w-40">

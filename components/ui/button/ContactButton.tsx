@@ -1,6 +1,10 @@
 import Link from "next/link"
 
-export default function ContactButton({ link }: { link:string }) {
+interface ContactButtonProps {
+  link: string
+}
+
+export default function ContactButton({ link }: ContactButtonProps) {
   return (
     <Link
       href={link}

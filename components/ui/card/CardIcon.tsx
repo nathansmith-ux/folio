@@ -3,6 +3,7 @@ import CodingIcon from "../icons/CodingIcon";
 import OptimizeIcon from "../icons/OptimizeIcon";
 import LaunchIcon from "../icons/LaunchIcon";
 
+// Renders A Specific Icon Based On The Name Of The Icon From Props
 function renderIcon(iconName: string) {
   switch (iconName) {
     case 'PlanningIcon':
@@ -32,13 +33,13 @@ function renderIcon(iconName: string) {
   }
 }
 
-export default function CardIcon({ 
-  header, description, icon 
-}: { 
-  header:string, 
-  description:string,
+interface CardIconProps {
+  header: string,
+  description: string,
   icon: string
-}) {
+}
+
+export default function CardIcon({ header, description, icon }: CardIconProps) {
   return (
     <div>
       <div className="w-full p-6 bg-orange-100 border border-black rounded-lg">

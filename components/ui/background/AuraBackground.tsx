@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 import React, { ReactElement } from "react";
 import { AuroraBackgroundHelper } from "@/components/ui/background/AuraBackgroundHelper";
 
-export function AuroraBackground({ children }: {children: ReactElement}) {
+interface AuroraBackgroundProps {
+  children: ReactElement
+}
+
+export function AuroraBackground({ children }: AuroraBackgroundProps) {
   return (
     <AuroraBackgroundHelper>
       <motion.div

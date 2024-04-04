@@ -4,7 +4,12 @@ import ConsultationButton from "../button/ConsultationButton"
 import ThreeDCardGrid from "../card/ThreeDCardGrid"
 import { techStack } from "@/site-copy/webDevPage"
 
-export default function TextCentered({ header, description }: { header:string, description: string }) {
+interface TextCenteredProps {
+  header: string,
+  description: string
+}
+
+export default function TextCentered({ header, description }: TextCenteredProps) {
   return (
       <section className="bg-orange-100 pt-44 pb-12 lg:pt-20 md:pt-36 border-b border-black">
     <div className="px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
