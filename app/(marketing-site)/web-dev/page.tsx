@@ -26,6 +26,7 @@ export default function WebDevPage() {
         header="Your Vision, Our Expertise - Let's Scale To New Heights Together"
         description="Transform your vision into reality with our expertise in web development – let's create your digital masterpiece together"
         image="/cta/cta-image.webp"
+        color="bg-blue-500"
       />
       <CardIconGrid 
         process={process}

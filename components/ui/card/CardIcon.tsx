@@ -2,6 +2,9 @@ import PlanningIcon from "../icons/PlanningIcon";
 import CodingIcon from "../icons/CodingIcon";
 import OptimizeIcon from "../icons/OptimizeIcon";
 import LaunchIcon from "../icons/LaunchIcon";
+import ContentIcon from "../icons/ContentIcon";
+import MagnifyIcon from "../icons/MagnifyIcon";
+import PerformanceIcon from "../icons/PerformanceIcon";
 
 // Renders A Specific Icon Based On The Name Of The Icon From Props
 function renderIcon(iconName: string) {
@@ -14,6 +17,12 @@ function renderIcon(iconName: string) {
       return <OptimizeIcon />
     case 'LaunchIcon':
       return <LaunchIcon />
+    case 'ContentIcon':
+      return <ContentIcon />
+    case 'MagnifyIcon':
+      return <MagnifyIcon />
+    case 'PerformanceIcon':
+      return <PerformanceIcon />
     case 'NextjsIcon':
       return
     case 'PrismaIcon':

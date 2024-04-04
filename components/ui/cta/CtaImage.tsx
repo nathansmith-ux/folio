@@ -1,9 +1,16 @@
 import Image from "next/image"
 import ElevatorPitchButton from "../button/ElevatorPitchButton"
 
-function CtaImage({ header, description, image }: { header: string, description: string, image: string }) {
+interface CtaImageProps {
+  header: string,
+  description: string,
+  image: string,
+  color: string
+}
+
+function CtaImage({ header, description, image, color }: CtaImageProps) {
   return (
-    <section className="bg-blue-500 py-20 md:px-10 border border-black">
+    <section className={`${color} py-20 md:px-10 border border-black`}>
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
           <Image 
             className="w-full dark:hidden" 
