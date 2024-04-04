@@ -1,22 +1,24 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function HeroWImage({ image, header, description, ctaOne, ctaTwo, linkOne, linkTwo }: { 
-  image: string
+interface HeroWImageProps {
+  image: string,
   header: string,
   description: string,
   ctaOne: string,
   ctaTwo: string,
   linkOne: string,
-  linkTwo: string,
-}) {
+  linkTwo: string
+}
+
+export default function HeroWImage({ image, header, description, ctaOne, ctaTwo, linkOne, linkTwo }: HeroWImageProps) {
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-32 bg-orange-100 border border-black">
       <div className="container px-4 mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold tracking-tight lg:text-5xl">{header}</h1>
-            <p className="text-gray-500 dark:text-gray-400">{description}
+            <p className="text-gray-500">{description}
             </p>
             <div className="flex gap-4 mt-6">
               <Link

@@ -1,5 +1,15 @@
 import Image, { StaticImageData } from "next/image"
 
+interface CurrentWeatherCardProps {
+  location: string,
+  image: string | StaticImageData | undefined,
+  celcius: number,
+  fahrenheit: number,
+  conditions: string,
+  feelsLikeCelcius: number,
+  feelsLikeFahrenheit: number
+}
+
 export default function CurrentWeatherCard({ 
   location,
   image,
@@ -8,15 +18,7 @@ export default function CurrentWeatherCard({
   conditions,
   feelsLikeCelcius,
   feelsLikeFahrenheit
-} : {
-  location: string,
-  image: string | StaticImageData | undefined,
-  celcius: number,
-  fahrenheit: number,
-  conditions: string,
-  feelsLikeCelcius: number,
-  feelsLikeFahrenheit: number
-}) {
+}: CurrentWeatherCardProps) {
 
   const validImageSrc = image ?? '/navigation-assets/weather.webp';
 
