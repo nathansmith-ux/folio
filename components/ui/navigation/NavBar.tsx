@@ -57,8 +57,6 @@ export default function NavBar({ className }: { className?: string }) {
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/web-dev">Web Development</HoveredLink>
             <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/schema-markup">Schema Markup</HoveredLink>
-
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Generative UI">

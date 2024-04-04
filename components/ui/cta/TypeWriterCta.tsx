@@ -5,7 +5,7 @@ import ThreeDCardGrid from "../card/ThreeDCardGrid";
 import { TypewriterEffectSmooth } from "./TypeWriterCtaHelper";
 import { techStacks } from "@/site-copy/seoPage";
 
-export interface Word {
+interface Word {
   text: string;
   className?: string;
 }

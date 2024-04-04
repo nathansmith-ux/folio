@@ -33,13 +33,7 @@ export const services = [
   }
 ];
 
-export interface ProcessStep {
-  title: string;
-  description: string;
-  icon: string
-}
-
-export const process: ProcessStep[] = [
+export const process = [
   {
     title: "1. Planning",
     description: "We begin with an initial consultation to understand your vision, set goals, and plan your project's strategy.",

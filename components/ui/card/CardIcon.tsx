@@ -13,6 +13,20 @@ function renderIcon(iconName: string) {
       return <OptimizeIcon />
     case 'LaunchIcon':
       return <LaunchIcon />
+    case 'NextjsIcon':
+      return
+    case 'PrismaIcon':
+      return
+    case 'TailwindIcon':
+      return
+    case 'OpenAIIcon':
+      return
+    case 'SanityIcon':
+      return
+    case 'StripeIcon':
+      return
+    case 'ClerkIcon':
+      return 
     default:
       return null;
   }

@@ -7,7 +7,7 @@ import HeroWBullets from "@/components/ui/hero/HeroWBullets";
 import NavBar from "@/components/ui/navigation/NavBar";
 import Footer from "@/components/ui/footer/Footer";
 import { AuroraBackground } from "@/components/ui/background/AuraBackground";
-import { bulletPoints, words, services } from "@/site-copy/webDevPage";
+import { bulletPoints, words, services, process } from "@/site-copy/webDevPage";
 
 export default function WebDevPage() {  
   return (
@@ -27,7 +27,9 @@ export default function WebDevPage() {
         description="Transform your vision into reality with our expertise in web development – let's create your digital masterpiece together"
         image="/cta/cta-image.webp"
       />
-      <CardIconGrid />
+      <CardIconGrid 
+        process={process}
+      />
       <HeroWBullets 
         image="/cta/minimalistic-hero.webp"
         header="Web Solutions for Small Businesses"
