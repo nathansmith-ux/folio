@@ -54,41 +54,29 @@ export default function NavBar({ className }: { className?: string }) {
           />
         </Link>
         <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
+          <div className="flex flex-col space-y-4 text-sm bg-orange-100 p-4 rounded-lg">
             <HoveredLink href="/web-dev">Web Development</HoveredLink>
             <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Generative UI">
-          <div className="text-sm grid grid-cols-2 gap-10 p-4">
+          <div className="text-sm grid grid-cols-2 gap-10 p-4 bg-orange-100 rounded-lg">
             <ProductItem
               title="Weather"
               href="/generative-ui/weather"
-              src="/navigation-assets/weather.webp"
+              src="/navigation-assets/weather-new.webp"
               description="Visualizes real-time weather patterns and forecasts interactively."
             />
             <ProductItem
-              title="Biology"
-              href="/generative-ui/biology"
-              src="/navigation-assets/biology.webp"
+              title="Life Sciences"
+              href="/generative-ui/life-sciences"
+              src="/navigation-assets/life-science.webp"
               description="Displays biological systems from cellular to ecosystem levels dynamically"
-            />
-            <ProductItem
-              title="Chemistry"
-              href="/generative-ui/chemistry"
-              src="/navigation-assets/chemistry.webp"
-              description="Simulates chemical reactions and molecular structures in real-time"
-            />
-            <ProductItem
-              title="Physics"
-              href="/generative-ui/physics"
-              src="/navigation-assets/physics.webp"
-              description="Provides interactive simulations of physical phenomena, from quantum to astrophysics"
             />
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Projects">
-          <div className="text-sm grid grid-cols-2 gap-10 p-4">
+          <div className="text-sm grid grid-cols-2 gap-10 bg-orange-100 p-4 rounded-lg">
             <ProductItem
               title="TaiL"
               href="/projects/tail"
