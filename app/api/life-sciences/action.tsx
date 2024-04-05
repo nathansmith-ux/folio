@@ -5,6 +5,7 @@ import getDrugData from "@/helpers/life-sciences/getDrugData";
 import determineDrugMeasurement from "@/helpers/life-sciences/determineDrugMeasurement";
 import getJournalData from "@/helpers/life-sciences/getJournalData";
 import JournalCardGrid from "@/components/ui/card/JournalCardGrid";
+import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
 
  
 const openai = new OpenAI({
@@ -38,7 +39,9 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
     messages: [
       { role: 'system', content: `You are an advanced life science assistant that can answer a wide range of questions about different life science topics
       
-      Always get paper data
+      If the user wants to find a research paper or research journal call get_paper_data
+
+      If the user wants to learn about a specific disease call get_disease_data
 
       ` },
       ...aiState.get()
@@ -127,6 +130,37 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
             <div>
               <JournalCardGrid 
                 records={records}
+              />
+            </div>
+          )
+
+        }
+      },
+      get_disease_data: {
+        description: 'Provide information about a specific disease',
+        parameters: z.object({
+          summary: z.string().describe('A concise 1 sentence description of the disease'),
+          pathogenesis: z.string().describe("The pathogenesis of the disease, maximum 3 sentences"),
+          symptoms: z.string().array().describe('A bullet point list of the different symptoms maximum of 5'),
+          risk_factors: z.string().array().describe('A bullet point list of the different risk factors maximum 5'),
+          treatment: z.string().describe('The treatment for this disease')
+        }).required(),
+        render: async function* ({ summary, pathogenesis, symptoms, risk_factors, treatment }) {
+
+          yield <div className="flex justify-center">
+            <p>Loading.... One Sec</p>
+          </div>
+
+          console.log(summary, pathogenesis, symptoms, risk_factors, treatment)
+
+          return (
+            <div>
+              <DiseaseCard 
+                summary={summary}
+                pathogenesis={pathogenesis}
+                symptoms={symptoms}
+                risk_factors={risk_factors}
+                treatment={treatment}
               />
             </div>
           )
