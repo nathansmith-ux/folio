@@ -18,6 +18,7 @@ export default function SeoPage() {
         />
       </AuroraBackground>
       <CardGrid 
+        header="The Services That We Provide"
         services={services}
       />
       <CtaImage 

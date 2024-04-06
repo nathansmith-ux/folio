@@ -16,6 +16,7 @@ export default function WebDevPage() {
       />
       <AuroraBackground>
         <CardGrid 
+          header="The Services That We Provide"
           services={services}
         />
       </AuroraBackground>

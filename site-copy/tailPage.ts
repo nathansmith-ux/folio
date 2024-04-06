@@ -50,3 +50,30 @@ export const process = [
     icon: "LaunchIcon"
   }
 ]
+
+export const bulletPoints = [
+  "Tailored web app solutions using a variety of programming languages to meet specific small business needs",
+  "Creating unique web solutions through direct and personalized client collaboration",
+  "Focused on developing easy-to-use web apps for efficient communication, task management, and automation",
+  "Enhancing productivity and reducing operational costs with customized, efficient web applications",
+  "Delivering a seamless, device-friendly user experience with responsive web design across all platforms"
+]
+
+export const words = [
+  {
+    text: "Let's",
+  },
+  {
+    text: "build",
+  },
+  {
+    text: "amazing",
+  },
+  {
+    text: "websites",
+  },
+  {
+    text: "together.",
+    className: "text-blue-500 dark:text-blue-500",
+  },
+];

@@ -54,13 +54,13 @@ export default function NavBar({ className }: { className?: string }) {
           />
         </Link>
         <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm bg-orange-100 p-4 rounded-lg">
+          <div className="flex flex-col space-y-4 text-sm p-4 rounded-lg">
             <HoveredLink href="/web-dev">Web Development</HoveredLink>
             <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Generative UI">
-          <div className="text-sm grid grid-cols-2 gap-10 p-4 bg-orange-100 rounded-lg">
+          <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
               title="Weather"
               href="/generative-ui/weather"
@@ -76,7 +76,7 @@ export default function NavBar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Projects">
-          <div className="text-sm grid grid-cols-2 gap-10 bg-orange-100 p-4 rounded-lg">
+          <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
               title="TaiL"
               href="/projects/tail"
