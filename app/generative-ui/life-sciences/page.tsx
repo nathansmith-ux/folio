@@ -5,6 +5,7 @@ import { useUIState, useActions } from "ai/rsc"
 import type { AI } from "@/app/api/weather/action"
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
 import LifeScienceIcon from "@/components/ui/icons/LifeScienceIcon";
+import InitialPrompts from "@/components/ui/banner/InitialPrompts";
 
 export default function Page() {
 
@@ -12,14 +13,23 @@ export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions<typeof AI>();
 
+  const handleInput = (prompt: string) => {
+    setInputValue(prompt)
+  }
+
   return (
     <main className="flex flex-col justify-end items-center h-screen">
-      <section className="overflow-y-auto ">
+      {messages.length === 0 && (
+        <InitialPrompts 
+          onPromptClick={handleInput}
+        />
+      )}
+      <section className="overflow-y-auto w-3/4">
       {
         // View messages in UI state
         messages.map((message: any) => (
           <div 
-            className="mb-5 p-4 text-lg"
+            className="p-4 mb-3"
             key={message.id}
           >
             {message.display}
@@ -66,7 +76,7 @@ export default function Page() {
         </div>
         <button 
           type="submit"
-          className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-500 rounded-lg border border-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
         >
           <SubmitIcon />
           <span className="sr-only">Search</span>

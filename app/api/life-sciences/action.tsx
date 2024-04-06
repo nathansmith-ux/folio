@@ -16,7 +16,7 @@ import getJournalData from "@/helpers/life-sciences/getJournalData";
 import JournalCardGrid from "@/components/ui/card/JournalCardGrid";
 import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
 import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
-import LifeScienceIcon from "@/components/ui/icons/LifeScienceIcon";
+import Spinner from "@/components/ui/loading/Spinner";
 
 
 type SubmitUserMessageResponse = {
@@ -68,7 +68,9 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         ]);
       }
  
-      return <p>{content}</p>
+      return (
+        <p>{content}</p>
+      )
     },
     tools: {
       get_drug_data: {
@@ -126,7 +128,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         render: async function* ({ topicOne, topicTwo, topicThree, publication }) {
 
           yield <div className="flex justify-center">
-            <p>Loading...</p>
+            <Spinner />
           </div>
 
           const journals = await getJournalData(topicOne, topicTwo, topicThree, publication)
