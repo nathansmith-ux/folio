@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# This Is My Official Portfolio
+# This Is My Official Website
 - If you see anything you would like me to change such as a bug please let me know
 - What's inside?
 

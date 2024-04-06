@@ -19,11 +19,9 @@ interface JournalCardGridProps {
 export default function JournalCardGrid({ records }: JournalCardGridProps) {
   return (
     <div className="my-20 md:mx-10 lg:mx-20">
-      <h2 className="text-5xl font-bold mb-8 ml-2">Your Query Matched The Following Journals</h2>
-      
-      {/* Conditional rendering based on the length of the records array */}
+      <h2 className="text-5xl font-bold mb-8 ml-2">Your Query Matched The Following Papers</h2>
       {records.length > 0 ? (
-        <section className="mx-4 gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <section className="mx-4 gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {records.map((record: IndividualRecord, index: number) => (
             <JournalCard 
               key={index}

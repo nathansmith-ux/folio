@@ -16,8 +16,7 @@ import getJournalData from "@/helpers/life-sciences/getJournalData";
 import JournalCardGrid from "@/components/ui/card/JournalCardGrid";
 import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
 import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
-
-
+import LifeScienceIcon from "@/components/ui/icons/LifeScienceIcon";
 
 
 type SubmitUserMessageResponse = {
