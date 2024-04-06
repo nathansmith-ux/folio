@@ -5,8 +5,8 @@ import { useState } from 'react';
 interface DiseaseCardProps {
   summary: string,
   pathogenesis: string,
-  symptoms: string[],
-  risk_factors: string[],
+  symptoms: string,
+  risk_factors: string,
   treatment: string
 }
 
@@ -16,8 +16,8 @@ export default function DiseaseCard({ summary, pathogenesis, symptoms, risk_fact
     const tabs = [
         { name: 'Summary', content: <p className='text-white'>{summary}</p> },
         { name: 'Pathogenesis', content: <p className='text-white'>{pathogenesis}</p> },
-        { name: 'Symptoms', content: <ul>{symptoms.map((symptom, index) => <li key={index} className='text-white'>{symptom}</li>)}</ul> },
-        { name: 'Risk Factors', content: <ul className='text-white'>{risk_factors.map((factor, index) => <li key={index} className='text-white'>{factor}</li>)}</ul> },
+        { name: 'Symptoms', content: <p className='text-white'>{symptoms}</p> },
+        { name: 'Risk Factors', content: <p className='text-white'>{risk_factors}</p> },
         { name: 'Treatment', content: <p className='text-white'>{treatment}</p> }
     ];
 

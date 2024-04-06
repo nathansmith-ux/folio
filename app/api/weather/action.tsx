@@ -1,4 +1,4 @@
-import { OpenAI } from "openai";
+import { aiConnection } from "@/utils/openAI";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
 import getCurrentWeather from "@/helpers/weather/getCurrentWeather";
@@ -8,11 +8,7 @@ import CurrentWeatherCard from "@/components/ui/weather/CurrentWeatherCard";
 import CurrentWeatherCardSkeleton from "@/components/ui/loading/CurrentWeatherCardSkeleton";
 
 import ForecastWeatherCard from "@/components/ui/weather/ForecastWeatherCard";
-import ForecastWeatherCardSkeleton from "@/components/ui/loading/ForecastWeatherCardSkeleton";
- 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton"; 
 
 type SubmitUserMessageResponse = {
   id: number
@@ -53,7 +49,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
   // The `render()` creates a generated, streamable UI.
   const ui = render({
     model: 'gpt-3.5-turbo-0125',
-    provider: openai,
+    provider: aiConnection,
     messages: [
       { role: 'system', content: `You are a weather assistant, 
       
@@ -92,7 +88,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           const weatherInfo = await getCurrentWeather(weatherLocation)
 
-          const image = await openai.images.generate({
+          const image = await aiConnection.images.generate({
             model: "dall-e-2",
             prompt: `A unique landmark for ${weatherLocation}`
           })
@@ -121,7 +117,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         render: async function* ({ numberOfDays, weatherLocation }) {
 
           yield <div className="flex justify-center">
-            <ForecastWeatherCardSkeleton />
+            <TabCardSkeleton />
           </div>
 
           const weatherInfo = await getWeatherForecast(numberOfDays, weatherLocation)

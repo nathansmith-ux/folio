@@ -1,16 +1,24 @@
-import { OpenAI } from "openai";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
+import { aiConnection } from "@/utils/openAI";
+
+// API Calls
 import getDrugData from "@/helpers/life-sciences/getDrugData";
 import determineDrugMeasurement from "@/helpers/life-sciences/determineDrugMeasurement";
+import getDiseasePathogenesis from "@/helpers/life-sciences/disease/getDiseasePathogenesis";
+import getDiseaseSymptoms from "@/helpers/life-sciences/disease/getDiseaseSymptoms";
+import getDiseaseRiskFactors from "@/helpers/life-sciences/disease/getDiseaseRiskFactors";
+import getDiseaseTreatment from "@/helpers/life-sciences/disease/getDiseaseTreatment";
+import getDiseaseSummary from "@/helpers/life-sciences/disease/getDiseaseSummary";
 import getJournalData from "@/helpers/life-sciences/getJournalData";
+
+// Components
 import JournalCardGrid from "@/components/ui/card/JournalCardGrid";
 import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
+import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
 
- 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+
+
 
 type SubmitUserMessageResponse = {
   id: number
@@ -35,7 +43,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
   // The `render()` creates a generated, streamable UI.
   const ui = render({
     model: 'gpt-4-0125-preview',
-    provider: openai,
+    provider: aiConnection,
     messages: [
       { role: 'system', content: `You are an advanced life science assistant that can answer a wide range of questions about different life science topics
       
@@ -139,19 +147,19 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       get_disease_data: {
         description: 'Provide information about a specific disease',
         parameters: z.object({
-          summary: z.string().describe('A concise 1 sentence description of the disease'),
-          pathogenesis: z.string().describe("The pathogenesis of the disease, maximum 3 sentences"),
-          symptoms: z.string().array().describe('A bullet point list of the different symptoms maximum of 5'),
-          risk_factors: z.string().array().describe('A bullet point list of the different risk factors maximum 5'),
-          treatment: z.string().describe('The treatment for this disease')
+          disease: z.string().describe("The name of the disease the user is trying to understand")
         }).required(),
-        render: async function* ({ summary, pathogenesis, symptoms, risk_factors, treatment }) {
+        render: async function* ({ disease }) {
 
           yield <div className="flex justify-center">
-            <p>Loading.... One Sec</p>
+            <TabCardSkeleton />
           </div>
 
-          console.log(summary, pathogenesis, symptoms, risk_factors, treatment)
+          const summary = await getDiseaseSummary(disease)
+          const pathogenesis = await getDiseasePathogenesis(disease)
+          const symptoms = await getDiseaseSymptoms(disease)
+          const riskFactors = await getDiseaseRiskFactors(disease)
+          const treatment = await getDiseaseTreatment(disease)
 
           return (
             <div>
@@ -159,7 +167,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
                 summary={summary}
                 pathogenesis={pathogenesis}
                 symptoms={symptoms}
-                risk_factors={risk_factors}
+                risk_factors={riskFactors}
                 treatment={treatment}
               />
             </div>
