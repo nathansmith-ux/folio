@@ -4,15 +4,12 @@ import CardIconGrid from "@/components/ui/card/CardIconGrid"
 import CtaImage from "@/components/ui/cta/CtaImage"
 import CtaText from "@/components/ui/cta/CtaText"
 import { TypeWriterCta } from "@/components/ui/cta/TypeWriterCta"
-import Footer from "@/components/ui/footer/Footer"
-import NavBar from "@/components/ui/navigation/NavBar"
 import HeroWBullets from "@/components/ui/hero/HeroWBullets"
 import { words, services, process, bulletPoints } from "@/site-copy/seoPage"
 
 export default function SeoPage() {
   return (
     <main>
-      <NavBar />
       <AuroraBackground>
         <TypeWriterCta
           subtext="Start Your Organic Journey Today" 
@@ -21,6 +18,7 @@ export default function SeoPage() {
         />
       </AuroraBackground>
       <CardGrid 
+        header="The Services That We Provide"
         services={services}
       />
       <CtaImage 
@@ -30,7 +28,8 @@ export default function SeoPage() {
         color="bg-pink-400"
       />
       <AuroraBackground>
-        <CardIconGrid 
+        <CardIconGrid
+          header="Our Process" 
           process={process}
         />
       </AuroraBackground>
@@ -44,7 +43,6 @@ export default function SeoPage() {
         header="Are You Ready To Take Your Business To The Digital World?"
         description="Let's carve out a piece of the internet for your business"
       />
-      <Footer />
     </main>
   )
 }

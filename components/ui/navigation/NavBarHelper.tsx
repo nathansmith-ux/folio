@@ -89,7 +89,7 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <div className="hover:bg-slate-400 p-4 rounded-lg">
+    <div className="hover:bg-blue-200 p-4 rounded-lg">
       <Link href={href} className="flex space-x-2">
         <Image
           src={src}
@@ -115,7 +115,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 hover:text-slate-400"
+      className="text-neutral-700 hover:text-black"
     >
       {children}
     </Link>

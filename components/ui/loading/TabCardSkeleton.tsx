@@ -1,4 +1,4 @@
-export default function ForecastWeatherCardSkeleton() {
+export default function TabCardSkeleton() {
   return (
     <div className="w-full dark:bg-gray-800 px-2 py-4 rounded-lg">
       <div className="flex border-b border-gray-700 mb-4">

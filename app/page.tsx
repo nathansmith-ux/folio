@@ -1,3 +1,5 @@
+import ContactForm from "@/components/ui/contact/ContactForm";
+import JournalCard from "@/components/ui/life-science/JournalCard";
 import NavBar from "@/components/ui/navigation/NavBar";
 
 export default function Home() {

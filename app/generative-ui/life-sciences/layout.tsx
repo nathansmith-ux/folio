@@ -1,8 +1,7 @@
-import Footer from "@/components/ui/footer/Footer";
-import NavBar from "@/components/ui/navigation/NavBar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../globals.css";
+import "../../globals.css";
+import { AI } from "@/app/api/life-sciences/action";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,18 +10,18 @@ export const metadata: Metadata = {
   description: "Meet your next partner for AI, Web Development and SEO projects",
 };
 
-export default function MarketingSiteLayout({
-  children,
+export default function WeatherLayout({
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer />
-      </body>
+      <AI>
+        <body className={inter.className}>
+          {children}
+        </body>
+      </AI>
     </html>
   );
 }
