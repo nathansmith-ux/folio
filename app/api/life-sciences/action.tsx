@@ -13,7 +13,7 @@ import getDiseaseSummary from "@/helpers/life-sciences/disease/getDiseaseSummary
 import getJournalData from "@/helpers/life-sciences/getJournalData";
 
 // Components
-import JournalCardGrid from "@/components/ui/card/JournalCardGrid";
+import JournalCardGrid from "@/components/ui/life-science/JournalCardGrid";
 import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
 import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
 import Spinner from "@/components/ui/loading/Spinner";

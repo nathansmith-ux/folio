@@ -14,8 +14,6 @@ export default async function getCurrentWeather(location: string) {
 
     const weatherData = await res.json();
 
-    console.log(weatherData);
-
     return weatherData;
 
   } catch (err) {

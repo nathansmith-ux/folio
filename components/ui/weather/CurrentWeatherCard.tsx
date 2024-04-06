@@ -26,8 +26,8 @@ export default function CurrentWeatherCard({
     <div className="px-6 py-4 max-w-60 bg-gray-700 rounded-lg">
       <div className="flex flex-col items-center mb-2">
         <div>
-          <p className="text-3xl bold">{location}</p>
-          <p>{conditions}</p>
+          <p className="text-3xl bold text-white">{location}</p>
+          <p className="text-white">{conditions}</p>
         </div>
       </div>
       <div className="flex flex-col items-center gap-2 py-2">
@@ -43,16 +43,16 @@ export default function CurrentWeatherCard({
             }}
             width="100"
           />
-          <div className="text-4xl font-semibold">{celcius}°C</div>
+          <div className="text-4xl font-semibold text-white">{celcius}°C</div>
         </div>
       </div>
       <div className="mt-4">
-        <p className="flex justify-center">Feels Like</p>
+        <p className="flex justify-center text-white">Feels Like</p>
         <div className="flex justify-around mt-2">
-          <p className="text-lg">
+          <p className="text-lg text-white">
             {feelsLikeCelcius}°C
           </p>
-          <p className="text-lg">
+          <p className="text-lg text-white">
             {feelsLikeFahrenheit}°F
           </p>
         </div>

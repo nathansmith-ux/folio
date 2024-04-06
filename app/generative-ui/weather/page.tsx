@@ -5,6 +5,7 @@ import { useUIState, useActions } from "ai/rsc"
 import type { AI } from "@/app/api/weather/action"
 import TemperatureIcon from "@/components/ui/icons/TemperatureIcon";
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
+import InitialPrompts from "@/components/ui/banner/InitialPrompts";
 
 export default function Page() {
 
@@ -12,8 +13,17 @@ export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions<typeof AI>();
 
+  const handleInput = (prompt: string) => {
+    setInputValue(prompt)
+  }
+
   return (
     <main className="flex flex-col justify-end items-center h-screen">
+      {messages.length === 0 && (
+        <InitialPrompts 
+          onPromptClick={handleInput}
+        />
+      )}
       <section className="overflow-y-auto ">
       {
         // View messages in UI state

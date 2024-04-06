@@ -37,9 +37,9 @@ export default function ForecastWeatherCard({ forecastday }: ForecastDayProps) {
         name: day.date,
         content: (
             <div>
-                <p>Max Temp: {isCelsius ? day.day.maxtemp_c + '°C' : day.day.maxtemp_f + '°F'}</p>
-                <p>Min Temp: {isCelsius ? day.day.mintemp_c + '°C' : day.day.mintemp_f + '°F'}</p>
-                <p>Condition: {day.day.condition.text}</p>
+                <p className="text-white">Max Temp: {isCelsius ? day.day.maxtemp_c + '°C' : day.day.maxtemp_f + '°F'}</p>
+                <p className="text-white">Min Temp: {isCelsius ? day.day.mintemp_c + '°C' : day.day.mintemp_f + '°F'}</p>
+                <p className="text-white">Condition: {day.day.condition.text}</p>
                 <img src={day.day.condition.icon} alt="Weather condition" />
             </div>
         ),
@@ -47,13 +47,13 @@ export default function ForecastWeatherCard({ forecastday }: ForecastDayProps) {
 
     return (
         <section>
-            <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" role="tablist">
+            <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
+                <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50" id="defaultTab" role="tablist">
                     {tabs.map(tab => (
                         <li className="me-2 m-2" key={tab.name}>
                             <button 
                                 onClick={() => setActiveTab(tab.name)} 
-                                className={`inline-block p-4 rounded-ss-lg ${activeTab === tab.name ? 'text-blue-600 dark:text-blue-500' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+                                className={`inline-block p-4 rounded-t-lg ${activeTab === tab.name ? 'text-blue-600' : 'hover:bg-gray-400 hover:text-white'}`}
                                 aria-selected={activeTab === tab.name}
                             >
                                 {tab.name}
@@ -67,7 +67,7 @@ export default function ForecastWeatherCard({ forecastday }: ForecastDayProps) {
                 </ul>
                 <div id="defaultTabContent">
                     {tabs.map(tab => (
-                        <div key={tab.name} className={`p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800 ${activeTab === tab.name ? 'block' : 'hidden'}`} id={tab.name} role="tabpanel">
+                        <div key={tab.name} className={`p-4 rounded-lg md:p-8 bg-gray-800 ${activeTab === tab.name ? 'block' : 'hidden'}`} id={tab.name} role="tabpanel">
                             {tab.content}
                         </div>
                     ))}
