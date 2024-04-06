@@ -27,7 +27,8 @@ export default function SeoPage() {
         color="bg-pink-400"
       />
       <AuroraBackground>
-        <CardIconGrid 
+        <CardIconGrid
+          header="Our Process" 
           process={process}
         />
       </AuroraBackground>

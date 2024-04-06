@@ -26,6 +26,7 @@ export default function WebDevPage() {
         color="bg-blue-500"
       />
       <CardIconGrid 
+        header="Our Process"
         process={process}
       />
       <HeroWBullets 

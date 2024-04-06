@@ -1,7 +1,6 @@
+import { AuroraBackground } from "@/components/ui/background/AuraBackground"
 import CardIconGrid from "@/components/ui/card/CardIconGrid"
-import Footer from "@/components/ui/footer/Footer"
 import HeroWImage from "@/components/ui/hero/HeroWImage"
-import NavBar from "@/components/ui/navigation/NavBar"
 import { process } from "@/site-copy/tailPage"
 
 export default function TailPage() {
@@ -16,9 +15,12 @@ export default function TailPage() {
         linkOne="https://www.tail-adventures.com"
         linkTwo="/blog"
       />
-      <CardIconGrid 
-        process={process}
-      />
+      <AuroraBackground>
+        <CardIconGrid 
+          header="The Project's Tech Stack"
+          process={process}
+        />
+      </AuroraBackground>
     </main>
   )
 }
