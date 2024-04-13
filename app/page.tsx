@@ -1,11 +1,13 @@
-import ContactForm from "@/components/ui/contact/ContactForm";
-import JournalCard from "@/components/ui/life-science/JournalCard";
+import { AuroraBackground } from "@/components/ui/background/AuraBackground";
+import ChatInterface from "@/components/ui/chat/ChatInterface";
+import HomepageChat from "@/components/ui/chat/HomepageChat";
 import NavBar from "@/components/ui/navigation/NavBar";
 
 export default function Home() {
   return (
-    <main>
+    <main className="h-screen">
       <NavBar/>
+        <HomepageChat />
     </main>
   );
 }
