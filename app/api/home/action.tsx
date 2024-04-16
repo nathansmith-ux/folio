@@ -3,33 +3,32 @@ import { z } from "zod";
 import { aiConnection } from "@/utils/openAI";
 
 // Components
-import Spinner from "@/components/ui/loading/Spinner";
+import Spinner from "@/components/ui/loading/Spinner"
+import CardGrid from "@/components/ui/card/CardGrid";
+import CardIconGrid from "@/components/ui/card/CardIconGrid";
+import HeroWImage from "@/components/ui/hero/HeroWImage";
 
 // Web Development Services
 import { 
-  services as WebServices,
-  process as WebProcess
+  services as webServices,
+  process as webProcess
 } from "@/site-copy/webDevPage";
 
 // SEO Serivces
 import { 
-  services as SeoServices, 
-  process as SeoProcess
+  services as seoServices, 
+  process as seoProcess
 } from "@/site-copy/seoPage";
-import GeneralServices from "@/components/ui/home/GeneralServices";
-import { AuroraBackground } from "@/components/ui/background/AuraBackground";
 
 type SubmitUserMessageResponse = {
   id: number
   display: React.ReactNode;
 }
-
  
 async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
   'use server';
  
   const aiState = getMutableAIState<typeof AI>();
- 
   // Update the AI state with the new user message.
   aiState.update([
     ...aiState.get(),
@@ -38,6 +37,8 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       content: userInput,
     },
   ]);
+
+  //const ui = createStreamableUI(<Spinner/>)
  
   // The `render()` creates a generated, streamable UI.
   const ui = render({
@@ -48,13 +49,13 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
       If the user wants general information about services call service_information
 
-      If the user wants more specific information about the web development services firstly here are the web development services offered by White walls media ${WebServices} do not add any other services  then call web_dev_information with this information
+      If the user wants more specific information about the web development services firstly here are the web development services offered by White walls media ${webServices} do not add any other services  then call web_dev_information with this information
 
-      If the user wants more specific information about the process of how White Walls Media conducts their web development services firstly here is the process ${WebProcess} then call web_dev_process with this information
+      If the user wants more specific information about the process of how White Walls Media conducts their web development services firstly here is the process ${webProcess} then call web_dev_process with this information
 
-      If the user wants more specific information about the seo services firstly here are the seo services offered by White walls media ${SeoServices} do not add any other services such as link building then call seo_information with this information
+      If the user wants more specific information about the seo services firstly here are the seo services offered by White walls media ${seoServices} do not add any other services such as link building then call seo_information with this information
 
-      If the user wants more specific information about the process of how White Walls Media conducts their seo services firstly here is the process ${SeoProcess} then call seo_process with this information
+      If the user wants more specific information about the process of how White Walls Media conducts their seo services firstly here is the process ${seoProcess} then call seo_process with this information
 
       If the user wants to learn more about generative ui call generative_ui
 
@@ -86,11 +87,89 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       service_information: {
         description: 'Provide information about web development and seo services',
         parameters: z.object({}).required(),
-        render: () => {
+        render: async function*() {
           
+          yield <Spinner />
+
           return (
             <div>
-              <GeneralServices />
+              <HeroWImage 
+                image="/tail-assets/what-is-tail.webp"
+                header="Meet TaiL"
+                description="TaiL is an AI platform designed to create dynamic and unique choose your own adventure games. We turn readers into players"
+                ctaOne="Play Today"
+                ctaTwo="How It Was Built"
+                linkOne="https://www.tail-adventures.com"
+                linkTwo="/blog"
+              />
+            </div>
+          );
+        }
+      },
+      web_dev_information: {
+        description: 'Provide information about web development services',
+        parameters: z.object({}).required(),
+        render: async function*() {
+          
+          yield <Spinner />
+
+          return (
+            <div>
+              <CardGrid 
+                header="We Provide The Following Web Development Services"
+                services={webServices}
+              />
+            </div>
+          );
+        }
+      },
+      seo_information: {
+        description: 'Provide information about SEO services',
+        parameters: z.object({}).required(),
+        render: async function*() {
+          
+          yield <Spinner />
+
+          return (
+            <div>
+              <CardGrid 
+                header="We Provide The Following SEO Services"
+                services={seoServices}
+              />
+            </div>
+          );
+        }
+      },
+      seo_process: {
+        description: 'Provide information about our SEO process',
+        parameters: z.object({}).required(),
+        render: async function*() {
+          
+          yield <Spinner />
+
+          return (
+            <div>
+              <CardIconGrid 
+                header="We Have A Four Step SEO process"
+                process={seoProcess}  
+              />
+            </div>
+          );
+        }
+      },
+      web_dev_process: {
+        description: 'Provide information about our web development process',
+        parameters: z.object({}).required(),
+        render: async function*() {
+          
+          yield <Spinner />
+
+          return (
+            <div>
+              <CardIconGrid 
+                header="We Have A Four Step Web Development process"
+                process={webProcess}
+              />
             </div>
           );
         }

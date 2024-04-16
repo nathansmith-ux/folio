@@ -4,6 +4,8 @@ import { useState } from "react"
 import { useUIState, useActions } from "ai/rsc"
 import type { AI } from "@/app/api/weather/action"
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
+import { HeroHighlight } from "../hero/HeroHighlight";
+import Image from "next/image";
 
 export default function HomepageChat() {
 
@@ -17,28 +19,41 @@ export default function HomepageChat() {
 
   return (
     <>
-      {messages.length === 0 && (
-        <div className="flex flex-col items-center pt-44">
-          <h1 className="text-5xl">Welcome To White Walls Media</h1>
-          <p className="mt-4 text-lg">Instead of a traditional website you can find everything you need on the homepage then watch as we build the website to fit your personal needs</p>
-        </div>
-      )}
-      <section className="flex flex-col items-center pt-40 overflow-y-auto w-3/4 mx-auto h-max-40 pb-28">
+      <div className="flex flex-col items-center pt-44">
+        <HeroHighlight 
+          normalText="Welcome To White Walls Media Where We Bring "
+          highlightedText="Your Vision To Life"
+        />
+        <p className="text-lg italic mt-8">Unlike regular websites we built a site that renders as you ask questions so that your experience is tailored to you</p>
+      </div>
+      <section className="flex flex-col pt-40 overflow-y-auto w-full mx-auto h-max-40 pb-28">
       {
-        // View messages in UI state
         messages.map((message: any) => (
-          <div 
-            className="p-4 mb-3"
-            key={message.id}
-          >
-            {message.display}
-          </div>
+         message.role === 'user' ? (
+            <div 
+              className="mb-8 mt-8 text-3xl font-medium flex justify-center items-center bg-blue-400 p-8 w-1/2 mx-auto rounded-lg text-white" 
+              key={message.id}
+            >
+              <Image 
+                src="/user-icon.webp"
+                height="50"
+                width="50"
+                className="rounded-lg mr-4"
+                alt="User icon"
+              />
+              <p>{message.display}</p>
+            </div>
+          ) : (
+            <div key={message.id}>
+              {message.display}
+            </div>
+          )
         ))
       }
       </section>
  
       <form 
-        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-3/4 p-4 bg-white border-t mx-auto"
+        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full p-4 bg-white border-t mx-auto z-50"
         onSubmit={async (e) => {
           e.preventDefault();
           // Add user message to UI state
@@ -47,13 +62,14 @@ export default function HomepageChat() {
             {
               id: Date.now(),
               display: <div>{inputValue}</div>,
+              role: 'user'
             },
           ]);
           // Submit and get response message
           const responseMessage = await submitUserMessage(inputValue);
           setMessages((currentMessages) => [
             ...currentMessages,
-            responseMessage,
+            { ...responseMessage, role: 'system' },
           ]);
           setInputValue('');
         }}
@@ -63,7 +79,7 @@ export default function HomepageChat() {
           <input
             type="text"
             id="simple-search"
-            className="bg-slate-500 border border-gray-300 text-white placeholder-white text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+            className="bg-orange-100 border border-gray-300 text-black placeholder-black text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
             placeholder="Find Anything On My Website By Just Asking"
             required
             value={inputValue}

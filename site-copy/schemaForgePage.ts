@@ -1,18 +1,26 @@
 export const services = [
   {
-    title: "Keyword Strategies",
-    description: "Crafting comprehensive keyword strategies to boost rankings and drive targeted traffic."
+    title: "Python",
+    description: "Utilizing Python's powerful libraries to develop robust data analysis tools, automate repetitive tasks, and build complex backend systems."
   },
   {
-    title: "Schema Markup",
-    description: "Implementing Schema markup to enhance your website's rich snippets in search results."
+    title: "Nextjs 14",
+    description: "Leveraging Next.js 14 features to enhance your web applications with server-side rendering, static site generation, and incremental static regeneration for optimal performance."
   },
   {
-    title: "Content Strategies",
-    description: "Developing SEO-driven content strategies to engage audiences and establish domain authority."
+    title: "React",
+    description: "Building dynamic and responsive user interfaces with React, employing the latest hooks and state management techniques to ensure scalable and maintainable code."
   },
   {
-    title: "Technical Audits",
-    description: "Performing in-depth technical audits to uncover and fix SEO issues impacting site performance."
-  }
+    title: "Prisma",
+    description: "Streamlining database workflows with Prisma by simplifying data access, integrating ORM for type-safe queries, and ensuring migrations are efficient and consistent."
+  },
+  {
+    title: "OpenAI",
+    description: "Incorporating OpenAI's cutting-edge AI and machine learning models into applications to enable natural language processing, automated decision-making, and enhanced user interactions."
+  },
+  {
+    title: "Tailwind",
+    description: "We utilize Tailwind CSS for responsive design, accelerating the development of intuitive user interfaces."
+  },
 ];

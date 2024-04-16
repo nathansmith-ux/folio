@@ -1,5 +1,3 @@
-import { AuroraBackground } from "@/components/ui/background/AuraBackground";
-import ChatInterface from "@/components/ui/chat/ChatInterface";
 import HomepageChat from "@/components/ui/chat/HomepageChat";
 import NavBar from "@/components/ui/navigation/NavBar";
 
