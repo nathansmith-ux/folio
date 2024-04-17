@@ -27,6 +27,8 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
       {messages.length === 0 && (
         <InitialPrompts 
           onPromptClick={handleInput}
+          promptOne="Find Research Papers On [topic]"
+          promptTwo="What is [disease]?"
         />
       )}
       <section className="overflow-y-auto w-3/4">

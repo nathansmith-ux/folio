@@ -38,7 +38,7 @@ export default function NavBar({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("fixed inset-x-0 max-w-2xl mx-auto z-50 transition-transform duration-700", visible ? "translate-y-5" : "-translate-y-full", className)}
+      className={cn("fixed inset-x-0 max-w-4xl mx-auto z-50 transition-transform duration-700", visible ? "translate-y-5" : "-translate-y-full", className)}
     >
       <Menu setActive={setActive}>
         <Link
@@ -62,10 +62,10 @@ export default function NavBar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Generative UI">
           <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
-              title="Weather"
-              href="/generative-ui/weather"
-              src="/navigation-assets/weather-new.webp"
-              description="Visualizes real-time weather patterns and forecasts interactively."
+              title="Cyber Security"
+              href="/generative-ui/cyber-security"
+              src="/navigation-assets/cyber-security.webp"
+              description="Check domain, url and file safety in real time, powered by VirusTotal."
             />
             <ProductItem
               title="Life Sciences"

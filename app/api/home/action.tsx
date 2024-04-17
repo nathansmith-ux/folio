@@ -19,6 +19,7 @@ import {
   services as seoServices, 
   process as seoProcess
 } from "@/site-copy/seoPage";
+import CtaText from "@/components/ui/cta/CtaText";
 
 type SubmitUserMessageResponse = {
   id: number
@@ -61,6 +62,10 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
       If the user wants to learn more about Nathan's projects call project_information
 
+      If the user wants to contact White walls media call contact_us
+
+      Otherwise return text responses for all other inquiries
+
       ` },
       ...aiState.get()
     ],
@@ -93,14 +98,9 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           return (
             <div>
-              <HeroWImage 
-                image="/tail-assets/what-is-tail.webp"
-                header="Meet TaiL"
-                description="TaiL is an AI platform designed to create dynamic and unique choose your own adventure games. We turn readers into players"
-                ctaOne="Play Today"
-                ctaTwo="How It Was Built"
-                linkOne="https://www.tail-adventures.com"
-                linkTwo="/blog"
+              <CtaText 
+              header="We Offer Both Web Development & SEO Services"
+              description="Explore our different offerings by simplying asking what are your seo (or web development) services"
               />
             </div>
           );
@@ -172,6 +172,24 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
               />
             </div>
           );
+        }
+      },
+      generative_ui : {
+        description: 'Provide information about what generative ui is',
+        parameters: z.object({}).required(),
+        render: async function*() {
+        }
+      },
+      project_information: {
+        description: `Provide information about Nathan's projects including TaiL and Schema Forge`,
+        parameters: z.object({}).required(),
+        render: async function*() {
+        }
+      },
+      contact_us: {
+        description: `Provide contact information and ways to contact White Walls Media`,
+        parameters: z.object({}).required(),
+        render: async function*() {
         }
       }
     }

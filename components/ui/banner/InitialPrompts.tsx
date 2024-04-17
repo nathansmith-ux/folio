@@ -4,9 +4,11 @@ import ElevatorPitchButton from "../button/ElevatorPitchButton";
 
 interface InitialPromptsProps {
   onPromptClick: (prompt: string) => void;
+  promptOne: string
+  promptTwo: string
 }
 
-export default function InitialPrompts({ onPromptClick }: InitialPromptsProps) {
+export default function InitialPrompts({ onPromptClick, promptOne, promptTwo }: InitialPromptsProps) {
   return (
     <section>
       <div id="marketing-banner" tabIndex={-1} className="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-slate-500 border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6">
@@ -27,18 +29,18 @@ export default function InitialPrompts({ onPromptClick }: InitialPromptsProps) {
             <p className="flex items-center text-md font-bold text-white mb-4">Need Help? Here are some prompts to get you started</p>
             <div className="mb-4">
               <button 
-                onClick={() => onPromptClick('Find Research Papers On [topic]')}
+                onClick={() => onPromptClick(promptOne)}
                 className="group bg-white p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150"  
               >
-                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">Find Research Papers On [topic]</p>
+                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">{promptOne}</p>
               </button>
             </div>
             <div>
               <button 
-                onClick={() => onPromptClick('What is [disease]?')}
+                onClick={() => onPromptClick(promptTwo)}
                 className="group bg-white p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150" 
               >
-                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">What is [disease]?</p>
+                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">{promptTwo}</p>
               </button>
             </div>
           </div>
