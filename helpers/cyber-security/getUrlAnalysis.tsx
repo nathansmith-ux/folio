@@ -1,3 +1,19 @@
+interface EngineEntry {
+  method: string;
+  engine_name: string;
+  category: string;
+  result: string;
+}
+
+interface ResultObject {
+  [key: string]: EngineEntry;
+}
+
+type Category = 'harmless' | 'undetected' | 'suspicious' | 'malicious';
+
+type Status = 'clean' | 'unrated' | 'null'
+
+
 export async function getUrlAnalysis(analysisUrl: string) {
   const res = await fetch(analysisUrl, {
     method: 'GET',
@@ -13,7 +29,44 @@ export async function getUrlAnalysis(analysisUrl: string) {
 
   const data = await res.json(); 
 
-  console.log("GET DATA", data.data.attributes.results)
+  const results: ResultObject[] = [data.data.attributes.results]
+  
+  console.log(results)
 
-  return data; 
+  const tally: Record<Category, number> = {
+    harmless: 0,
+    undetected: 0,
+    suspicious: 0,
+    malicious: 0
+  };
+
+  const status: Record<Status, number> = {
+    clean: 0,
+    unrated: 0,
+    null: 0
+  };
+
+  results.forEach(resultObject => {
+    Object.values(resultObject).forEach(entry => {
+        const category = entry.category.toLowerCase();
+        const stat = entry.result.toLowerCase();
+        
+        if (stat in status ) {
+          status[stat as Status]++;
+        } else {
+          console.warn(`Unexpected stat: ${stat}`)
+        }
+
+        if (category in tally) {
+            
+          tally[category as Category]++;
+        
+          } else {
+
+            console.warn(`Unexpected category: ${category}`);
+        }
+    });
+});
+
+  return [tally, status]; 
 }

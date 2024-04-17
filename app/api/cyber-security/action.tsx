@@ -1,38 +1,22 @@
 import { aiConnection } from "@/utils/openAI";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
-import getCurrentWeather from "@/helpers/weather/getCurrentWeather";
-import getWeatherForecast from "@/helpers/weather/getWeatherForecast";
-
-import CurrentWeatherCard from "@/components/ui/weather/CurrentWeatherCard";
-import CurrentWeatherCardSkeleton from "@/components/ui/loading/CurrentWeatherCardSkeleton";
-
-import ForecastWeatherCard from "@/components/ui/weather/ForecastWeatherCard";
-import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton"; 
 import { scanUrl } from "@/helpers/cyber-security/scanUrl";
 import { getUrlAnalysis } from "@/helpers/cyber-security/getUrlAnalysis";
+import Spinner from "@/components/ui/loading/Spinner";
+import DonutChartGrid from "@/components/ui/card/DonutChartGrid";
 
 type SubmitUserMessageResponse = {
   id: number
   display: React.ReactNode;
 }
 
-enum TabName {
-  About = 'about',
-  Services = 'services',
-  Statistics = 'statistics',
+
+let idCounter = 0
+
+function generateUniqueId() {
+  return `id-${Date.now()}-${++idCounter}`;
 }
-
-type TabData = {
-  name: TabName;
-  content: JSX.Element;
-};
-
-const tabs: TabData[] = [
-  { name: TabName.About, content: <p>Hello There about</p> },
-  { name: TabName.Services, content: <p>Hello There services</p> },
-  { name: TabName.Statistics, content: <p>Hello There statistics</p> },
-];
  
 async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
   'use server';
@@ -82,18 +66,41 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
           url: z.string().describe('the url the user wants to scan')
         }).required(),
         render: async function* ({ url }) {
-          yield <div className="flex justify-center">
-            <CurrentWeatherCardSkeleton />
-            </div>
+          yield <Spinner />
 
           const data = await scanUrl(url)
 
           const urlAnalysis = data.data.links.self
 
-          const analysis = await getUrlAnalysis(urlAnalysis)
+          const [tally, status] = await getUrlAnalysis(urlAnalysis)
+
+          console.log("THe tally is", tally)
+          console.log("THE STATUS Is", status)
+
+          const chartOne = {
+            header: "Security Categories",
+            labels: ["Harmless", "Undetected", "Suspicious", "Malicious"],
+            values: [25, 25, 25, 25],
+            colors: ["#ff0000", "#0000ff", "#ffff00"],
+            id: generateUniqueId()
+        }
+      
+        const chartTwo = {
+            header: "Overall Result",
+            labels: ["Clean", "Unrated", "Null"],
+            values: [30, 40, 30],
+            colors: ["#008000", "#800080", "#ffa500"],
+            id: generateUniqueId()
+        }
 
           return (
             <div className="flex justify-center">
+              <DonutChartGrid 
+                header="URL Analysis Results" 
+                description="Distribution of traffic sources by color representation"
+                chartOne={chartOne}
+                chartTwo={chartTwo}
+              />
             </div>
           )
         }
