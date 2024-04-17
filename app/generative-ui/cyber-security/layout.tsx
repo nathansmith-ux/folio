@@ -6,11 +6,11 @@ import { AI } from "@/app/api/cyber-security/action";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "White Walls Media",
+  title: "Cyber Security Generative UI",
   description: "Meet your next partner for AI, Web Development and SEO projects",
 };
 
-export default function WeatherLayout({
+export default function CyberSecurityLayout({
   children
 }: Readonly<{
   children: React.ReactNode;

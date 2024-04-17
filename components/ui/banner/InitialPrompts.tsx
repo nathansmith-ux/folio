@@ -9,46 +9,49 @@ interface InitialPromptsProps {
 }
 
 export default function InitialPrompts({ onPromptClick, promptOne, promptTwo }: InitialPromptsProps) {
+
+  const promptStyles = "text-lg text-start text-white group-hover:text-white transition-colors duration-150";
+  
+  const promptBgStyles = "group bg-slate-500 w-full p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150 border-black shadow-lg";
+
   return (
-    <section>
-      <div id="marketing-banner" tabIndex={-1} className="fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-slate-500 border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6">
-        <div className="flex flex-col items-start mb-3 me-4 md:items-center md:flex-row md:mb-0">
-          <Link 
-            href="/"         
-            className="flex items-center mb-2 border-gray-200 md:pe-4 md:me-4 md:border-e md:mb-0 dark:border-gray-600"
-          >
-            <Image
-              src="/whitewalls.webp"
-              height="45"
-              width="45"
-              className="rounded-full"
-              alt="A logo of a maze against white"
-            />
-          </Link>
-          <div className="flex flex-col">
-            <p className="flex items-center text-md font-bold text-white mb-4">Need Help? Here are some prompts to get you started</p>
-            <div className="mb-4">
-              <button 
-                onClick={() => onPromptClick(promptOne)}
-                className="group bg-white p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150"  
-              >
-                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">{promptOne}</p>
-              </button>
-            </div>
-            <div>
-              <button 
-                onClick={() => onPromptClick(promptTwo)}
-                className="group bg-white p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150" 
-              >
-                <p className="text-lg text-black group-hover:text-white transition-colors duration-150">{promptTwo}</p>
-              </button>
-            </div>
+    <section className="w-11/12 md:w-3/4">
+      <div className="fixed z-50 flex justify-between items-center w-11/12 md:w-3/4 p-4 -translate-x-1/2 bg-slate-500 border border-gray-100 rounded-lg shadow-sm left-1/2 top-6">
+        <Link 
+          href="/"         
+          className="flex items-center mb-2 border-gray-200 md:pe-4 md:me-4 md:border-e md:mb-0 dark:border-gray-600"
+        >
+        <Image
+          src="/whitewalls.webp"
+          height="45"
+          width="45"
+          className="rounded-full"
+          alt="A logo of a maze against white"
+        />
+        </Link>
+        <h1 className="text-3xl text-white">Welcome To White Walls Media Generative UI</h1>
+        <ElevatorPitchButton />
+      </div>
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <button 
+              onClick={() => onPromptClick(promptOne)}
+              className={promptBgStyles}  
+            >
+              <p className={promptStyles}>{promptOne}</p>
+            </button>
+          </div>
+          <div>
+            <button 
+              onClick={() => onPromptClick(promptTwo)}
+              className={promptBgStyles}
+            >
+              <p className={promptStyles}>{promptTwo}</p>
+            </button>
           </div>
         </div>
-        <div className="flex items-center flex-shrink-0">
-          <ElevatorPitchButton />
-        </div>
-      </div>
+      </section>
     </section>
   );
 }

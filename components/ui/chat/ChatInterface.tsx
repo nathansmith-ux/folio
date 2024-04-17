@@ -5,14 +5,18 @@ import { useUIState, useActions } from "ai/rsc"
 import type { AI } from "@/app/api/weather/action"
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
 import LifeScienceIcon from "@/components/ui/icons/LifeScienceIcon";
-import TemperatureIcon from "../icons/TemperatureIcon";
+import CyberSecurityIcon from "../icons/CyberSecurityIcon";
 import InitialPrompts from "@/components/ui/banner/InitialPrompts";
 
 interface ChatInterfaceProps {
-  weather: boolean
+  security: boolean
+  placeholderText: string
+  promptOne: string
+  promptTwo: string
+  disclaimer: string
 }
 
-export default function ChatInterface({ weather }: ChatInterfaceProps) {
+export default function ChatInterface({ security, placeholderText, promptOne, promptTwo, disclaimer }: ChatInterfaceProps) {
 
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useUIState<typeof AI>();
@@ -27,8 +31,8 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
       {messages.length === 0 && (
         <InitialPrompts 
           onPromptClick={handleInput}
-          promptOne="Find Research Papers On [topic]"
-          promptTwo="What is [disease]?"
+          promptOne={promptOne}
+          promptTwo={promptTwo}
         />
       )}
       <section className="overflow-y-auto w-3/4">
@@ -46,7 +50,7 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
       </section>
  
       <form 
-        className="flex items-center w-3/4 mx-auto mb-6"
+        className="flex items-center w-11/12 md:w-3/4 mx-auto mb-2 bg-slate-700 p-10 rounded-lg"
         onSubmit={async (e) => {
           e.preventDefault();
           // Add user message to UI state
@@ -66,11 +70,11 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
           setInputValue('');
         }}
       >
-        <label htmlFor="simple-weather-search" className="sr-only">Search</label>
+        <label htmlFor="simple-security-search" className="sr-only">Search</label>
         <div className="relative w-full">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            {weather ? (
-              <TemperatureIcon />
+            {security ? (
+              <CyberSecurityIcon />
             ): (
               <LifeScienceIcon />
             )}
@@ -79,7 +83,7 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
             type="text"
             id="simple-search"
             className="bg-slate-500 border border-gray-300 text-white placeholder-white text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-            placeholder="Ask about different types of diseases and find research papers"
+            placeholder={placeholderText}
             required
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -93,6 +97,7 @@ export default function ChatInterface({ weather }: ChatInterfaceProps) {
           <span className="sr-only">Search</span>
         </button>
       </form>
+      <p className="mb-2 mx-8 text-sm italic text-center">{disclaimer}</p>
     </>
   )
 }

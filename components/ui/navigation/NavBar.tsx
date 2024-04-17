@@ -91,12 +91,11 @@ export default function NavBar({ className }: { className?: string }) {
             />
           </div>
         </MenuItem>
-        {/* <Link
-          href="/blog"
-          className="hover:text-slate-400"
+        <Link
+          href="/about-me"
         >
-          Blog
-        </Link> */}
+          About Me
+        </Link>
         <ContactButton 
           link="https://calendly.com/nathanrmsmith/30min"
         />

@@ -24,7 +24,7 @@ export default function HomepageChat() {
           normalText="Welcome To White Walls Media Where We Bring "
           highlightedText="Your Vision To Life"
         />
-        <p className="text-lg italic mt-8">Unlike regular websites we built a site that renders as you ask questions so that your experience is tailored to you</p>
+        <p className="text-lg italic mt-8">Unlike regular websites I built a site that renders as you ask questions so that your experience is tailored to you</p>
       </div>
       <section className="flex flex-col pt-40 overflow-y-auto w-full mx-auto h-max-40 pb-28">
       {
