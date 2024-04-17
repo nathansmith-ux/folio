@@ -42,6 +42,7 @@ export default function DonutChart({ header, labels, values, colors, id } : Donu
       dataLabels: {
         enabled: true,
         style: {
+          colors: ["#000000"],
           fontFamily: "Inter, sans-serif",
         },
       },

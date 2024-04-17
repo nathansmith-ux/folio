@@ -31,8 +31,6 @@ export async function getUrlAnalysis(analysisUrl: string) {
 
   const results: ResultObject[] = [data.data.attributes.results]
   
-  console.log(results)
-
   const tally: Record<Category, number> = {
     harmless: 0,
     undetected: 0,
@@ -50,7 +48,7 @@ export async function getUrlAnalysis(analysisUrl: string) {
     Object.values(resultObject).forEach(entry => {
         const category = entry.category.toLowerCase();
         const stat = entry.result.toLowerCase();
-        
+
         if (stat in status ) {
           status[stat as Status]++;
         } else {
@@ -68,5 +66,5 @@ export async function getUrlAnalysis(analysisUrl: string) {
     });
 });
 
-  return [tally, status]; 
+  return {tally, status}; 
 }

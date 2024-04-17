@@ -72,24 +72,21 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           const urlAnalysis = data.data.links.self
 
-          const [tally, status] = await getUrlAnalysis(urlAnalysis)
-
-          console.log("THe tally is", tally)
-          console.log("THE STATUS Is", status)
+          const { tally, status } = await getUrlAnalysis(urlAnalysis)
 
           const chartOne = {
             header: "Security Categories",
             labels: ["Harmless", "Undetected", "Suspicious", "Malicious"],
-            values: [25, 25, 25, 25],
-            colors: ["#ff0000", "#0000ff", "#ffff00"],
+            values: [tally.harmless, tally.undetected, tally.suspicious, tally.malicious],
+            colors: ["#22c55e", "#fde047", "#f43f5e", "#dc2626"],
             id: generateUniqueId()
         }
       
         const chartTwo = {
             header: "Overall Result",
             labels: ["Clean", "Unrated", "Null"],
-            values: [30, 40, 30],
-            colors: ["#008000", "#800080", "#ffa500"],
+            values: [status.clean, status.unrated, status.null],
+            colors: ["#22c55e", "#fde047", "#000000"],
             id: generateUniqueId()
         }
 
@@ -97,7 +94,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
             <div className="flex justify-center">
               <DonutChartGrid 
                 header="URL Analysis Results" 
-                description="Distribution of traffic sources by color representation"
+                description="An overview of the security categories and the overall result"
                 chartOne={chartOne}
                 chartTwo={chartTwo}
               />
