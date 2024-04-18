@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 type ForecastDay = {
     date: string;
@@ -40,7 +41,12 @@ export default function ForecastWeatherCard({ forecastday }: ForecastDayProps) {
                 <p className="text-white">Max Temp: {isCelsius ? day.day.maxtemp_c + '°C' : day.day.maxtemp_f + '°F'}</p>
                 <p className="text-white">Min Temp: {isCelsius ? day.day.mintemp_c + '°C' : day.day.mintemp_f + '°F'}</p>
                 <p className="text-white">Condition: {day.day.condition.text}</p>
-                <img src={day.day.condition.icon} alt="Weather condition" />
+                <Image 
+                    src={day.day.condition.icon} 
+                    alt="Weather condition" 
+                    width="60"
+                    height="60"
+                />
             </div>
         ),
     }));

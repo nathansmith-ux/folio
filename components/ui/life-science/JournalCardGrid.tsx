@@ -34,7 +34,7 @@ export default function JournalCardGrid({ records }: JournalCardGridProps) {
           ))}
         </section>
       ) : (
-        <p className="text-gray-700 text-md">Unfortunately, your query didn't match any papers. Please try again.</p>
+        <p className="text-gray-700 text-md">Unfortunately, your query didn&apos;t match any papers. Please try again.</p>
       )}
     </div>
   );
