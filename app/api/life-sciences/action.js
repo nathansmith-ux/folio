@@ -1,9 +1,6 @@
-import 'server-only'
-
 import { createAI, createStreamableUI, getMutableAIState } from 'ai/rsc';
 import OpenAI from 'openai';
 import { runOpenAICompletion } from '@/utils';
-import { z } from 'zod'
 
 // API Calls
 import getDrugData from "@/helpers/life-sciences/getDrugData";
@@ -24,7 +21,7 @@ import AICard from "@/components/ui/card/AICard";
 
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || '',
+  apiKey: process.env.OPENAI_API_KEY,
 });
  
 async function submitUserMessage(userInput) {
