@@ -11,8 +11,8 @@ export default async function getJournalData(topicOne: string, topicTwo: string,
 
   // Add query parts for each topic
   addQueryPart(topicOne);
-  addQueryPart(topicTwo);
-  addQueryPart(topicThree);
+  // addQueryPart(topicTwo);
+  // addQueryPart(topicThree);
 
   // Query part for publication
   if (publication) {
