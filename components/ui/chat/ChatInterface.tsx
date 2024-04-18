@@ -18,6 +18,9 @@ interface ChatInterfaceProps {
 
 export default function ChatInterface({ security, placeholderText, promptOne, promptTwo, disclaimer }: ChatInterfaceProps) {
 
+  const bgStyles = security ? "bg-slate-700" : "bg-emerald-500"
+  const inputStyles = security ? "bg-slate-500" : "bg-emerald-700"
+
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions<typeof AI>();
@@ -33,6 +36,7 @@ export default function ChatInterface({ security, placeholderText, promptOne, pr
           onPromptClick={handleInput}
           promptOne={promptOne}
           promptTwo={promptTwo}
+          security={security}
         />
       )}
       <section className="overflow-y-auto w-3/4">
@@ -50,7 +54,7 @@ export default function ChatInterface({ security, placeholderText, promptOne, pr
       </section>
  
       <form 
-        className="flex items-center w-11/12 md:w-3/4 mx-auto mb-2 bg-slate-700 p-10 rounded-lg"
+        className={`flex items-center w-11/12 md:w-3/4 mx-auto mb-2 ${bgStyles} p-10 rounded-lg`}
         onSubmit={async (e) => {
           e.preventDefault();
           // Add user message to UI state
@@ -82,7 +86,7 @@ export default function ChatInterface({ security, placeholderText, promptOne, pr
           <input
             type="text"
             id="simple-search"
-            className="bg-slate-500 border border-gray-300 text-white placeholder-white text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+            className={`${inputStyles} border border-gray-300 text-white placeholder-white text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5`}
             placeholder={placeholderText}
             required
             value={inputValue}

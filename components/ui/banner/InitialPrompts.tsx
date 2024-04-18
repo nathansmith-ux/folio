@@ -6,17 +6,20 @@ interface InitialPromptsProps {
   onPromptClick: (prompt: string) => void;
   promptOne: string
   promptTwo: string
+  security: boolean
 }
 
-export default function InitialPrompts({ onPromptClick, promptOne, promptTwo }: InitialPromptsProps) {
+export default function InitialPrompts({ onPromptClick, promptOne, promptTwo, security }: InitialPromptsProps) {
 
   const promptStyles = "text-lg text-start text-white group-hover:text-white transition-colors duration-150";
-  
-  const promptBgStyles = "group bg-slate-500 w-full p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150 border-black shadow-lg";
+
+  const bannerBgStyles = security ? "bg-slate-500" : "bg-emerald-700"
+
+  const promptBgStyles = security ? ("group bg-slate-500 w-full p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150 border-black shadow-lg") : ("group bg-emerald-500 w-full p-4 rounded-lg hover:bg-blue-500 transition-colors duration-150 border-black shadow-lg")
 
   return (
     <section className="w-11/12 md:w-3/4">
-      <div className="fixed z-50 flex justify-between items-center w-11/12 md:w-3/4 p-4 -translate-x-1/2 bg-slate-500 border border-gray-100 rounded-lg shadow-sm left-1/2 top-6">
+      <div className={`fixed z-50 flex justify-between items-center w-11/12 md:w-3/4 p-4 -translate-x-1/2 ${bannerBgStyles} border border-gray-100 rounded-lg shadow-sm left-1/2 top-6`}>
         <Link 
           href="/"         
           className="flex items-center mb-2 border-gray-200 md:pe-4 md:me-4 md:border-e md:mb-0 dark:border-gray-600"

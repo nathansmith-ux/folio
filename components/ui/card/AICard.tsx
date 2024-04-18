@@ -7,8 +7,11 @@ interface AICardProps {
 }
 
 export default function AICard({ children, cyberSecurity } : AICardProps) {
+
+  const bgStyles = cyberSecurity ? "bg-slate-700" : "bg-emerald-500"
+
   return (
-    <div className='flex bg-slate-700 p-8 rounded-lg'>
+    <div className={`flex ${bgStyles} p-8 rounded-lg`}>
       {cyberSecurity ? (
         <Image 
           src="/cyber-security/cyber-ai.webp"
