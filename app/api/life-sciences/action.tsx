@@ -47,7 +47,7 @@ async function submitUserMessage(userInput: string) {
   );
  
   const completion = runOpenAICompletion(openai, {
-    model: 'gpt-4-0125-preview',
+    model: 'gpt-3.5-turbo-0125',
     stream: true,
     messages: [
       { role: 'system', content: `You are an advanced life science assistant that can answer a wide range of questions about different life science topics
