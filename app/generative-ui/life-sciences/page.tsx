@@ -1,5 +1,5 @@
 import ChatInterface from "@/components/ui/chat/ChatInterface";
-export const maxDuration = 90
+export const maxDuration = 300
 
 export default function LifeSciencePage() {
   return (
