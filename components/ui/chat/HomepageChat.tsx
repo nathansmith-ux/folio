@@ -19,12 +19,12 @@ export default function HomepageChat() {
 
   return (
     <>
-      <div className="flex flex-col items-center pt-44">
+      <div className="flex flex-col items-center pt-16 lg:pt-44">
         <HeroHighlight 
           normalText="Welcome To White Walls Media Where We Bring "
           highlightedText="Your Vision To Life"
         />
-        <p className="text-lg italic mt-8">Unlike regular websites I built a site that renders as you ask questions so that your experience is tailored to you</p>
+        <p className="text-md lg:text-lg italic mt-8 mx-8 text-center">Unlike regular websites I built a site that renders as you ask questions so that your experience is tailored to you</p>
       </div>
       <section className="flex flex-col pt-40 overflow-y-auto w-full mx-auto h-max-40 pb-28">
       {
@@ -53,7 +53,7 @@ export default function HomepageChat() {
       </section>
  
       <form 
-        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full p-4 bg-white border-t mx-auto z-50"
+        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full p-4 bg-white border-t mx-auto z-40"
         onSubmit={async (e) => {
           e.preventDefault();
           // Add user message to UI state

@@ -85,7 +85,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       }
  
       return (
-        <p>{content}</p>
+        <p className="mx-10">{content}</p>
       )
     },
     tools: {

@@ -32,7 +32,7 @@ export default function InitialPrompts({ onPromptClick, promptOne, promptTwo, se
           alt="A logo of a maze against white"
         />
         </Link>
-        <h1 className="text-3xl text-white">Welcome To White Walls Media Generative UI</h1>
+        <h1 className="hidden md:block md:text-2xl xl:text-3xl text-white">Welcome To White Walls Media Generative UI</h1>
         <ElevatorPitchButton />
       </div>
       <section>

@@ -21,7 +21,7 @@ export function TypeWriterCta({
 }: TypeWriterCtaProps
 ) {
   return (
-    <div className="flex flex-col items-center justify-center my-4 py-32">
+    <div className="flex flex-col items-center justify-center my-4 pt-16 lg:py-32">
       <p className="text-neutral-600 text-xs sm:text-base  ">
         {subtext}
       </p>
