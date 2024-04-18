@@ -1,9 +1,6 @@
-import 'server-only'
-
 import { createAI, createStreamableUI, getMutableAIState } from 'ai/rsc';
 import OpenAI from 'openai';
-import { runOpenAICompletion } from '@/utils';
-import { z } from 'zod'
+import { runOpenAICompletion } from '@/utils/index';
 
 // Components
 import Spinner from "@/components/ui/loading/Spinner"
@@ -57,13 +54,13 @@ const projects = [
 
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || '',
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function submitUserMessage(userInput: string) {
+async function submitUserMessage(userInput) {
   'use server';
  
-  const aiState = getMutableAIState<typeof AI>();
+  const aiState = getMutableAIState();
   aiState.update([
     ...aiState.get(),
     {
@@ -103,7 +100,7 @@ async function submitUserMessage(userInput: string) {
       Otherwise return text responses for all other inquiries
 
       ` },
-      ...aiState.get().map((info: any) => ({
+      ...aiState.get().map((info) => ({
         role: info.role,
         content: info.content,
         name: info.name,
@@ -111,49 +108,73 @@ async function submitUserMessage(userInput: string) {
     ],
     functions: [
       {
-        name: 'service_information',
-        description: 'Provide information about web development and seo services',
-        parameters: z.object({}).required(),
+          name: 'service_information',
+          description: 'Provide information about web development and seo services',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'web_dev_information',
-        description: 'Provide information about web development services',
-        parameters: z.object({}).required(),
+          name: 'web_dev_information',
+          description: 'Provide information about web development services',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'seo_information',
-        description: 'Provide information about SEO services',
-        parameters: z.object({}).required(),
+          name: 'seo_information',
+          description: 'Provide information about SEO services',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'seo_process',
-        description: 'Provide information about our SEO process',
-        parameters: z.object({}).required(),
+          name: 'seo_process',
+          description: 'Provide information about our SEO process',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'web_dev_process',
-        description: 'Provide information about our web development process',
-        parameters: z.object({}).required(),
+          name: 'web_dev_process',
+          description: 'Provide information about our web development process',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'generative_ui',
-        description: 'Provide information about what generative ui is',
-        parameters: z.object({}).required(),
+          name: 'generative_ui',
+          description: 'Provide information about what generative ui is',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'project_information',
-        description: `Provide information about Nathan's projects including TaiL and Schema Forge`,
-        parameters: z.object({}).required(),
+          name: 'project_information',
+          description: `Provide information about Nathan's projects including TaiL and Schema Forge`,
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       },
       {
-        name: 'contact_us',
-        description: 'Provide contact information and ways to contact White Walls Media',
-        parameters: z.object({}).required(),
+          name: 'contact_us',
+          description: 'Provide contact information and ways to contact White Walls Media',
+          parameters: {
+              type: "object",
+              properties: {}
+          }
       }
-    ]
+    ]  
   });
 
-  completion.onTextContent((content: string, isFinal: boolean) => {
+  completion.onTextContent((content, isFinal) => {
     reply.update(content);
     if (isFinal) {
       reply.done();
@@ -334,17 +355,9 @@ async function submitUserMessage(userInput: string) {
   };
 }
  
-const initialAIState: {
-  role: 'user' | 'assistant' | 'system' | 'function';
-  content: string;
-  id?: string;
-  name?: string;
-}[] = [];
+const initialAIState = [];
 
-const initialUIState: {
-  id: number;
-  display: React.ReactNode;
-}[] = [];
+const initialUIState = [];
  
 export const AI = createAI({
   actions: {
