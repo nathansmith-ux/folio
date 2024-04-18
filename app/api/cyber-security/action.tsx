@@ -5,6 +5,7 @@ import { scanUrl } from "@/helpers/cyber-security/scanUrl";
 import { getUrlAnalysis } from "@/helpers/cyber-security/getUrlAnalysis";
 import Spinner from "@/components/ui/loading/Spinner";
 import DonutChartGrid from "@/components/ui/card/DonutChartGrid";
+import AICard from "@/components/ui/card/AICard";
 
 type SubmitUserMessageResponse = {
   id: number
@@ -37,9 +38,14 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
     model: 'gpt-3.5-turbo-0125',
     provider: aiConnection,
     messages: [
-      { role: 'system', content: `You are a weather assistant, 
+      { role: 'system', content: `You are a cybersecurity assistant who is well versed and understands the different ways that cyber attacks are carried out.
       
-      If the user wants to get an analysis on call scan_url` },
+      Your job is to provide educational information to help train future cybersecurity analysts but should not go into detail or provide a step by step process on how to perpetrate different cyber attacks
+      
+      If the user wants to get an analysis a url on call scan_url
+      
+      Otherwise answer their questions in regular text
+      ` },
       ...aiState.get()
     ],
     // `text` is called when an AI returns a text response (as opposed to a tool call).
@@ -57,11 +63,17 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         ]);
       }
  
-      return <p>{content}</p>
+      return (
+        <AICard
+          cyberSecurity={true}
+        >
+          <p className="w-full text-white">{content}</p>
+        </AICard>
+      )
     },
     tools: {
       scan_url: {
-        description: 'Get the latest weather updates',
+        description: 'Scan a url and determine if it is dangerous',
         parameters: z.object({
           url: z.string().describe('the url the user wants to scan')
         }).required(),
@@ -91,13 +103,17 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         }
 
           return (
-            <div className="flex justify-center">
-              <DonutChartGrid 
-                header="URL Analysis Results" 
-                description="An overview of the security categories and the overall result"
-                chartOne={chartOne}
-                chartTwo={chartTwo}
-              />
+            <div>
+              <AICard
+                cyberSecurity={true}
+              >
+                <DonutChartGrid 
+                  header="URL Analysis Results" 
+                  description="An overview of the security categories and the overall result"
+                  chartOne={chartOne}
+                  chartTwo={chartTwo}
+                />
+              </AICard>
             </div>
           )
         }

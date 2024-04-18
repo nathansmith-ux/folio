@@ -25,7 +25,7 @@ export default function DonutChartGrid({ header, description, chartOne, chartTwo
     <div className="w-full p-6 bg-orange-100 border border-black rounded-lg">
       <h2 className="mb-2 text-2xl text-center font-semibold tracking-tight text-gray-900">{header}</h2>
       <p className="mb-3 font-normal text-gray-500 text-center">{description}</p>
-        <div className='flex justify-center gap-4'>
+        <div className='flex flex-col md:flex-row justify-center gap-4'>
           <DonutChart
             header={chartOne.header}
             labels={chartOne.labels}

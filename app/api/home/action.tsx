@@ -178,18 +178,27 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         description: 'Provide information about what generative ui is',
         parameters: z.object({}).required(),
         render: async function*() {
+
+          yield <Spinner />
+
         }
       },
       project_information: {
         description: `Provide information about Nathan's projects including TaiL and Schema Forge`,
         parameters: z.object({}).required(),
         render: async function*() {
+
+          yield <Spinner />
+
         }
       },
       contact_us: {
         description: `Provide contact information and ways to contact White Walls Media`,
         parameters: z.object({}).required(),
         render: async function*() {
+
+          yield <Spinner />
+
         }
       }
     }

@@ -17,6 +17,7 @@ import JournalCardGrid from "@/components/ui/life-science/JournalCardGrid";
 import DiseaseCard from "@/components/ui/life-science/DiseaseCard";
 import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
 import Spinner from "@/components/ui/loading/Spinner";
+import AICard from "@/components/ui/card/AICard";
 
 
 type SubmitUserMessageResponse = {
@@ -69,7 +70,11 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       }
  
       return (
-        <p>{content}</p>
+        <AICard
+          cyberSecurity={false}
+        >
+          <p className="text-white">{content}</p>
+        </AICard>
       )
     },
     tools: {
@@ -137,9 +142,13 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           return (
             <div>
-              <JournalCardGrid 
-                records={records}
-              />
+              <AICard
+                cyberSecurity={false}
+              >
+                <JournalCardGrid 
+                  records={records}
+                />
+              </AICard>
             </div>
           )
 
@@ -164,13 +173,17 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           return (
             <div>
-              <DiseaseCard 
-                summary={summary}
-                pathogenesis={pathogenesis}
-                symptoms={symptoms}
-                risk_factors={riskFactors}
-                treatment={treatment}
-              />
+              <AICard
+                cyberSecurity={false}
+              >
+                <DiseaseCard 
+                  summary={summary}
+                  pathogenesis={pathogenesis}
+                  symptoms={symptoms}
+                  risk_factors={riskFactors}
+                  treatment={treatment}
+                />
+              </AICard>
             </div>
           )
 

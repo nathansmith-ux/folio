@@ -19,7 +19,7 @@ interface JournalCardGridProps {
 export default function JournalCardGrid({ records }: JournalCardGridProps) {
   return (
     <div className="my-20">
-      <h2 className="text-5xl font-bold mb-8">Your Query Matched The Following Papers</h2>
+      <h2 className="text-5xl text-white font-bold mb-8">Your Query Matched The Following Papers</h2>
       {records.length > 0 ? (
         <section className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {records.map((record: IndividualRecord, index: number) => (
