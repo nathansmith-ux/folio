@@ -1,5 +1,6 @@
 import Footer from "@/components/ui/footer/Footer";
 import NavBar from "@/components/ui/navigation/NavBar";
+import MobileNavBar from "@/components/ui/navigation/MobileNavBar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
@@ -19,7 +20,12 @@ export default function MarketingSiteLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
+      <div className="block md:hidden lg:hidden">
+        <MobileNavBar />
+      </div>
+      <div className="hidden md:block">
+        <NavBar/>
+      </div>
         {children}
         <Footer />
       </body>

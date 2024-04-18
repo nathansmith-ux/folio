@@ -1,9 +1,7 @@
 import { AuroraBackground } from "@/components/ui/background/AuraBackground"
 import CardIconGrid from "@/components/ui/card/CardIconGrid"
 import HeroWImage from "@/components/ui/hero/HeroWImage"
-import HeroWBullets from "@/components/ui/hero/HeroWBullets"
-import { TypeWriterCta } from "@/components/ui/cta/TypeWriterCta"
-import { process, bulletPoints, words } from "@/site-copy/tailPage"
+import { process } from "@/site-copy/tailPage"
 
 export default function TailPage() {
   return (
@@ -13,27 +11,14 @@ export default function TailPage() {
         header="Meet TaiL"
         description="TaiL is an AI platform designed to create dynamic and unique choose your own adventure games. We turn readers into players"
         ctaOne="Play Today"
-        ctaTwo="How It Was Built"
+        ctaTwo="Stay Up To Date With The Project"
         linkOne="https://www.tail-adventures.com"
-        linkTwo="/blog"
+        linkTwo="https://www.linkedin.com/company/tail-adventures/"
       />
       <AuroraBackground>
         <CardIconGrid 
           header="The Project's Tech Stack"
           process={process}
-        />
-      </AuroraBackground>
-      <HeroWBullets 
-        image="/cta/minimalistic-hero.webp"
-        header="Web Solutions for Small Businesses"
-        description="Empowering small businesses with custom web applications designed for efficiency and growth"
-        bulletPoints={bulletPoints}
-      />
-      <AuroraBackground>
-        <TypeWriterCta
-          subtext="The road to a new digitial reach starts here" 
-          words={words}
-          cards={false}
         />
       </AuroraBackground>
     </main>
