@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { createAI, createStreamableUI, getMutableAIState } from 'ai/rsc';
 import OpenAI from 'openai';
 import { runOpenAICompletion } from '@/utils';
