@@ -1,6 +1,6 @@
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
-import OpenAI from "openai";
+import { OpenAI } from "openai";
 
 // API Calls
 import getDrugData from "@/helpers/life-sciences/getDrugData";

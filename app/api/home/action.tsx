@@ -1,6 +1,6 @@
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
-import OpenAI from "openai";
+import { OpenAI } from "openai";
 
 // Components
 import Spinner from "@/components/ui/loading/Spinner"

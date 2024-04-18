@@ -5,7 +5,7 @@ import { getUrlAnalysis } from "@/helpers/cyber-security/getUrlAnalysis";
 import Spinner from "@/components/ui/loading/Spinner";
 import DonutChartGrid from "@/components/ui/card/DonutChartGrid";
 import AICard from "@/components/ui/card/AICard";
-import OpenAI from "openai";
+import { OpenAI } from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
