@@ -11,7 +11,6 @@ import CardGrid from "@/components/ui/card/CardGrid";
 import CardIconGrid from "@/components/ui/card/CardIconGrid";
 import ImageCardGrid from "@/components/ui/card/ImageCardGrid";
 import CtaText from "@/components/ui/cta/CtaText";
-import AICard from '@/components/ui/card/AICard';
 
 
 // Web Development Services
@@ -313,7 +312,7 @@ async function submitUserMessage(userInput: string) {
         }
       ])
     })
-    
+
   return {
     id: Date.now(),
     display: reply.value
