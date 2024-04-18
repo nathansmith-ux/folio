@@ -27,10 +27,10 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '',
 });
  
-async function submitUserMessage(userInput: string) {
+async function submitUserMessage(userInput) {
   'use server';
  
-  const aiState = getMutableAIState<typeof AI>();
+  const aiState = getMutableAIState();
  
   aiState.update([
     ...aiState.get(),
@@ -57,7 +57,7 @@ async function submitUserMessage(userInput: string) {
       If the user wants to learn about a specific disease call get_disease_data
 
       ` },
-      ...aiState.get().map((info: any) => ({
+      ...aiState.get().map((info) => ({
         role: info.role,
         content: info.content,
         name: info.name,
@@ -67,17 +67,39 @@ async function submitUserMessage(userInput: string) {
       {
         name: 'get_paper_data',
         description: 'Find specific research papers',
-        parameters: z.object({
-          topicOne: z.string().describe('The name of the topic the user is looking for'),
-          topicTwo: z.string().describe('The name of the second topic the user is looking for'),
-          topicThree: z.string().describe('The name of the three topic the user is looking for'),
-          publication: z.string().describe('The publication the user is looking for')
-        }).required(),
-      }
+        parameters: {
+          type: "object",
+          properties: {
+            topicOne: {
+              type: "string",
+              description: `The name of the topic the user is looking for`,
+            },
+            topicTwo: {
+              type: "string",
+              description: `The name of the second topic the user is looking for`,
+            },
+            topicThree: {
+              type: "string",
+              description: `The name of the third topic the user is looking for`,
+            },
+            publication: {
+              type: "string",
+              description: `The publication the user is looking for`,
+            },
+          },
+          required: ["value", "value_change"],
+        },
+      },
     ]
   })
 
     completion.onFunctionCall('get_paper_data', async ({ topicOne, topicTwo, topicThree, publication }) => {
+
+      reply.update(
+        <div className='flex justify-center'>
+          <p className='text-3xl'>LOADING...</p>
+        </div>
+      )
       
       const journals = await getJournalData(topicOne, topicTwo, topicThree, publication)
 
@@ -246,17 +268,9 @@ async function submitUserMessage(userInput: string) {
   }
 }
  
-const initialAIState: {
-  role: 'user' | 'assistant' | 'system' | 'function';
-  content: string;
-  id?: string;
-  name?: string;
-}[] = [];
+const initialAIState = [];
 
-const initialUIState: {
-  id: number;
-  display: React.ReactNode;
-}[] = [];
+const initialUIState = [];
  
 export const AI = createAI({
   actions: {
