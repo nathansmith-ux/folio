@@ -153,7 +153,22 @@ async function submitUserMessage(userInput: string) {
     ]
   });
 
+  completion.onTextContent((content: string, isFinal: boolean) => {
+    reply.update(content);
+    if (isFinal) {
+      reply.done();
+      aiState.done([...aiState.get(), { role: 'assistant', content }]);
+    }
+  });
+
     completion.onFunctionCall('service_information', async () => {
+
+      reply.update(
+        <div className='flex justify-center'>
+          <Spinner />
+        </div>
+      )
+
       reply.done(
         <div>
           <CtaText 
