@@ -1,4 +1,5 @@
 import ChatInterface from "@/components/ui/chat/ChatInterface";
+export const maxDuration = 90
 
 export default function CyberSecurityPage() {
   return (

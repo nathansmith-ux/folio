@@ -1,5 +1,5 @@
 import ChatInterface from "@/components/ui/chat/ChatInterface";
-import NavBar from "@/components/ui/navigation/NavBar";
+export const maxDuration = 90
 
 export default function LifeSciencePage() {
   return (
