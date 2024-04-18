@@ -1,4 +1,4 @@
-import { aiConnection } from "@/utils/openAI";
+import { aiConnection } from "@/utils/openAi";
 
 export default async function getDiseaseRiskFactors(disease: string): Promise<string> {
   try {
