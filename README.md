@@ -5,10 +5,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - What's inside?
 
 ## Generative UI 
-1. Weather App
-2. Biology Tutor
-3. Chemistry Tutor
-4. Physics Tutor
+1. Life Science
+2. Cyber Security
 
 ## Projects & Portfolio
 1. TaiL

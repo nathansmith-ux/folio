@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Meet your next partner for AI, Web Development and SEO projects",
 };
 
-export default function WeatherLayout({
+export default function LifeScienceLayout({
   children
 }: Readonly<{
   children: React.ReactNode;

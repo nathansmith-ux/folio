@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useUIState, useActions } from "ai/rsc"
-import type { AI } from "@/app/api/weather/action"
+import type { AI } from "@/app/api/home/action"
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
 import { HeroHighlight } from "../hero/HeroHighlight";
 import Image from "next/image";
@@ -74,7 +74,7 @@ export default function HomepageChat() {
           setInputValue('');
         }}
       >
-        <label htmlFor="simple-weather-search" className="sr-only">Search</label>
+        <label htmlFor="simple-website-search" className="sr-only">Search</label>
         <div className="relative w-full">
           <input
             type="text"

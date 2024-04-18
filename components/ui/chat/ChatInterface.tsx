@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useUIState, useActions } from "ai/rsc"
-import type { AI } from "@/app/api/weather/action"
+import type { AI } from "@/app/api/cyber-security/action"
 import SubmitIcon from "@/components/ui/icons/SubmitIcon";
 import LifeScienceIcon from "@/components/ui/icons/LifeScienceIcon";
 import CyberSecurityIcon from "../icons/CyberSecurityIcon";
