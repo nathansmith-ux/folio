@@ -1,6 +1,7 @@
 import HomepageChat from "@/components/ui/chat/HomepageChat";
 import MobileNavBar from "@/components/ui/navigation/MobileNavBar";
 import NavBar from "@/components/ui/navigation/NavBar";
+export const maxDuration = 300
 
 export default function Home() {
   return (
