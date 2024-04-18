@@ -90,6 +90,16 @@ async function submitUserMessage(userInput) {
     ]
   })
 
+  completion.onTextContent(async (content, isFinal) => {
+    reply.update(
+      <p>{content}</p>
+      );
+      if (isFinal) {
+        reply.done();
+        aiState.done([...aiState.get(), { role: "assistant", content }]);
+      }
+  });
+
     completion.onFunctionCall('get_paper_data', async ({ topicOne, topicTwo, topicThree, publication }) => {
 
       reply.update(
@@ -113,13 +123,6 @@ async function submitUserMessage(userInput) {
           </AICard>
         </div>
       )
-
-  //         const records = journals.records
-
-  //         return (
-  //           <div>
-
-  //         )
     })
     // `text` is called when an AI returns a text response (as opposed to a tool call).
     // Its content is streamed from the LLM, so this function will be called
