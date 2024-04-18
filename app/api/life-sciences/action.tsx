@@ -20,18 +20,27 @@ import Spinner from "@/components/ui/loading/Spinner";
 import AICard from "@/components/ui/card/AICard";
 
 
-type SubmitUserMessageResponse = {
-  id: number
-  display: React.ReactNode;
-}
+type AIStateItem =
+  | {
+      readonly role: "user" | "assistant" | "system";
+      readonly content: string;
+    }
+  | {
+      readonly role: "function";
+      readonly content: string;
+      readonly name: string;
+    };
 
+interface UIStateItem {
+  readonly id: number;
+  readonly display: React.ReactNode;
+}
  
-async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
+async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   'use server';
  
   const aiState = getMutableAIState<typeof AI>();
  
-  // Update the AI state with the new user message.
   aiState.update([
     ...aiState.get(),
     {
@@ -52,6 +61,7 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
       If the user wants to learn about a specific disease call get_disease_data
 
       ` },
+      { role: "user", content: userInput },
       ...aiState.get()
     ],
     // `text` is called when an AI returns a text response (as opposed to a tool call).
@@ -198,27 +208,13 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
   };
 }
  
-// Define the initial state of the AI. It can be any JSON object.
-const initialAIState: {
-  role: 'user' | 'assistant' | 'system' | 'function';
-  content: string;
-  id?: string;
-  name?: string;
-}[] = [];
+const initialAIState: AIStateItem[] = [];
+const initialUIState: UIStateItem[] = [];
  
-// The initial UI state that the client will keep track of, which contains the message IDs and their UI nodes.
-const initialUIState: {
-  id: number;
-  display: React.ReactNode;
-}[] = [];
- 
-// AI is a provider you wrap your application with so you can access AI and UI state in your components.
 export const AI = createAI({
   actions: {
     submitUserMessage
   },
-  // Each state can be any shape of object, but for chat applications
-  // it makes sense to have an array of messages. Or you may prefer something like { id: number, messages: Message[] }
   initialUIState,
   initialAIState
 });

@@ -6,7 +6,8 @@ import { aiConnection } from "@/utils/openAI";
 import Spinner from "@/components/ui/loading/Spinner"
 import CardGrid from "@/components/ui/card/CardGrid";
 import CardIconGrid from "@/components/ui/card/CardIconGrid";
-import HeroWImage from "@/components/ui/hero/HeroWImage";
+import ImageCardGrid from "@/components/ui/card/ImageCardGrid";
+import CtaText from "@/components/ui/cta/CtaText";
 
 // Web Development Services
 import { 
@@ -19,14 +20,24 @@ import {
   services as seoServices, 
   process as seoProcess
 } from "@/site-copy/seoPage";
-import CtaText from "@/components/ui/cta/CtaText";
 
-type SubmitUserMessageResponse = {
-  id: number
-  display: React.ReactNode;
+type AIStateItem =
+  | {
+      readonly role: "user" | "assistant" | "system";
+      readonly content: string;
+    }
+  | {
+      readonly role: "function";
+      readonly content: string;
+      readonly name: string;
+    };
+
+interface UIStateItem {
+  readonly id: number;
+  readonly display: React.ReactNode;
 }
  
-async function submitUserMessage(userInput: string): Promise<SubmitUserMessageResponse> {
+async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   'use server';
  
   const aiState = getMutableAIState<typeof AI>();
@@ -181,6 +192,30 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           yield <Spinner />
 
+          const generativeUi = [
+            {
+              header: "Cyber Security Gen UI",
+              description: "Get realtime answers to cyber security questions and analyze urls",
+              image: "/cyber-security/cyber-ai.webp",
+              link: "/generative-ui/cyber-security"
+            },
+            {
+              header: "Life Science Gen UI",
+              description: "Find scientific journals and learn more about different diseases",
+              image: "/life-science/life-science-ai.webp",
+              link: "/generative-ui/life-sciences"
+            }
+          ]
+
+          return (
+            <div>
+              <ImageCardGrid 
+                header="Our Different Gen UI Experiences"
+                cardContent={generativeUi}
+              />
+            </div>
+          )
+
         }
       },
       project_information: {
@@ -190,6 +225,30 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
 
           yield <Spinner />
 
+          const projects = [
+            {
+              header: "TaiL",
+              description: "An AI platform built using Nextjs 14 to create immersive choose your own adventure games",
+              image: "/tail-assets/what-is-tail.webp",
+              link: "/projects/tail"
+            },
+            {
+              header: "Schema Forge",
+              description: "An SEO platform built designed to make the generation of schema markup more efficent",
+              image: "/schema-forge-assets/coloredLogo.png",
+              link: "/projects/schema-forge"
+            }
+          ]
+
+          return (
+            <div>
+              <ImageCardGrid 
+                header="My Different Projects"
+                cardContent={projects}
+              />
+            </div>
+          )
+
         }
       },
       contact_us: {
@@ -198,6 +257,15 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
         render: async function*() {
 
           yield <Spinner />
+
+          return (
+            <div>
+              <CtaText 
+                header="Are You Ready To Take Your Business To The Digital World?"
+                description="Let's carve out a piece of the internet for your business"
+              />
+            </div>
+          )
 
         }
       }
@@ -210,27 +278,13 @@ async function submitUserMessage(userInput: string): Promise<SubmitUserMessageRe
   };
 }
  
-// Define the initial state of the AI. It can be any JSON object.
-const initialAIState: {
-  role: 'user' | 'assistant' | 'system' | 'function';
-  content: string;
-  id?: string;
-  name?: string;
-}[] = [];
+const initialAIState: AIStateItem[] = [];
+const initialUIState: UIStateItem[] = [];
  
-// The initial UI state that the client will keep track of, which contains the message IDs and their UI nodes.
-const initialUIState: {
-  id: number;
-  display: React.ReactNode;
-}[] = [];
- 
-// AI is a provider you wrap your application with so you can access AI and UI state in your components.
 export const AI = createAI({
   actions: {
     submitUserMessage
   },
-  // Each state can be any shape of object, but for chat applications
-  // it makes sense to have an array of messages. Or you may prefer something like { id: number, messages: Message[] }
   initialUIState,
   initialAIState
 });

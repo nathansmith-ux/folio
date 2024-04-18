@@ -31,7 +31,7 @@ export default function HomepageChat() {
         messages.map((message: any) => (
          message.role === 'user' ? (
             <div 
-              className="mb-8 mt-8 text-3xl font-medium flex justify-center items-center bg-blue-400 p-8 w-1/2 mx-auto rounded-lg text-white" 
+              className="mb-8 mt-8 text-3xl font-medium flex justify-center items-center bg-blue-400 p-8 lg:w-1/2 mx-auto rounded-lg text-white" 
               key={message.id}
             >
               <Image 
