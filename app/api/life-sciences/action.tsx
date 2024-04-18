@@ -1,6 +1,6 @@
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
-import { aiConnection } from "@/utils/openAI";
+import OpenAI from "openai";
 
 // API Calls
 import getDrugData from "@/helpers/life-sciences/getDrugData";
@@ -19,6 +19,10 @@ import TabCardSkeleton from "@/components/ui/loading/TabCardSkeleton";
 import Spinner from "@/components/ui/loading/Spinner";
 import AICard from "@/components/ui/card/AICard";
 
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 type AIStateItem =
   | {
@@ -52,7 +56,7 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   // The `render()` creates a generated, streamable UI.
   const ui = render({
     model: 'gpt-4-0125-preview',
-    provider: aiConnection,
+    provider: openai,
     messages: [
       { role: 'system', content: `You are an advanced life science assistant that can answer a wide range of questions about different life science topics
       

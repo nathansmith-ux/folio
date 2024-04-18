@@ -1,4 +1,3 @@
-import { aiConnection } from "@/utils/openAI";
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
 import { scanUrl } from "@/helpers/cyber-security/scanUrl";
@@ -6,6 +5,11 @@ import { getUrlAnalysis } from "@/helpers/cyber-security/getUrlAnalysis";
 import Spinner from "@/components/ui/loading/Spinner";
 import DonutChartGrid from "@/components/ui/card/DonutChartGrid";
 import AICard from "@/components/ui/card/AICard";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 type AIStateItem =
   | {
@@ -44,8 +48,8 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   ]);
  
   const ui = render({
-    model: 'gpt-3.5-turbo-0125',
-    provider: aiConnection,
+    model: 'gpt-4-0125-preview',
+    provider: openai,
     messages: [
       { role: 'system', content: `You are a cybersecurity assistant who is well versed and understands the different ways that cyber attacks are carried out.
       

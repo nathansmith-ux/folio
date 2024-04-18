@@ -1,6 +1,6 @@
 import { createAI, getMutableAIState, render } from "ai/rsc";
 import { z } from "zod";
-import { aiConnection } from "@/utils/openAI";
+import OpenAI from "openai";
 
 // Components
 import Spinner from "@/components/ui/loading/Spinner"
@@ -20,6 +20,11 @@ import {
   services as seoServices, 
   process as seoProcess
 } from "@/site-copy/seoPage";
+
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 type AIStateItem =
   | {
@@ -55,7 +60,7 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   // The `render()` creates a generated, streamable UI.
   const ui = render({
     model: 'gpt-4-0125-preview',
-    provider: aiConnection,
+    provider: openai,
     messages: [
       { role: 'system', content: `You are a website assistant that is designed to help users learn more about White Walls Media, the services offered by this agency, projects created by Nathan Smith (the founder) and showcase the vercel ai 3.0 sdk which helps with generative ui streaming
 
