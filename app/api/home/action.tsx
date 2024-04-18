@@ -28,30 +28,13 @@ import {
 
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || '',
 });
 
-type AIStateItem =
-  | {
-      readonly role: "user" | "assistant" | "system";
-      readonly content: string;
-    }
-  | {
-      readonly role: "function";
-      readonly content: string;
-      readonly name: string;
-    };
-
-interface UIStateItem {
-  readonly id: number;
-  readonly display: React.ReactNode;
-}
-
-async function submitUserMessage(userInput: string): Promise<UIStateItem> {
+async function submitUserMessage(userInput: string) {
   'use server';
  
   const aiState = getMutableAIState<typeof AI>();
-  // Update the AI state with the new user message.
   aiState.update([
     ...aiState.get(),
     {
@@ -66,7 +49,6 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
     </div>
   );
  
-  // The `render()` creates a generated, streamable UI.
   const completion = runOpenAICompletion(openai, {
     model: 'gpt-4-0125-preview',
     stream: true,
@@ -92,7 +74,11 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
       Otherwise return text responses for all other inquiries
 
       ` },
-      ...aiState.get()
+      ...aiState.get().map((info: any) => ({
+        role: info.role,
+        content: info.content,
+        name: info.name,
+      })),
     ],
     functions: [
       {
@@ -116,6 +102,15 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
           />
         </div>
       )
+
+      aiState.done([
+        ...aiState.get(),
+        {
+          role: 'function',
+          name: 'service_information',
+          content: `Explore our different offerings by simplying asking what are your seo (or web development) services`,
+        },
+      ])
     })
 //     functions: {
 //       service_information: {
@@ -296,8 +291,17 @@ async function submitUserMessage(userInput: string): Promise<UIStateItem> {
   };
 }
  
-const initialAIState: AIStateItem[] = [];
-const initialUIState: UIStateItem[] = [];
+const initialAIState: {
+  role: 'user' | 'assistant' | 'system' | 'function';
+  content: string;
+  id?: string;
+  name?: string;
+}[] = [];
+
+const initialUIState: {
+  id: number;
+  display: React.ReactNode;
+}[] = [];
  
 export const AI = createAI({
   actions: {
