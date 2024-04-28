@@ -51,7 +51,7 @@ interface CardIconProps {
 export default function CardIcon({ header, description, icon }: CardIconProps) {
   return (
     <div>
-      <div className="w-full p-6 bg-orange-100 border border-black rounded-lg">
+      <div className="w-full p-6 bg-indigo-300 border border-black rounded-lg">
         {renderIcon(icon)}
           <h3 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{header}</h3>
           <p className="mb-3 font-normal text-gray-500">{description}</p>

@@ -79,7 +79,7 @@ export default function HomepageChat() {
           <input
             type="text"
             id="simple-search"
-            className="bg-orange-100 border border-gray-300 text-black placeholder-black text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+            className="bg-blue-300 border border-gray-300 text-black placeholder-black text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
             placeholder="Find Anything On My Website By Just Asking"
             required
             value={inputValue}
