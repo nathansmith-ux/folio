@@ -59,7 +59,7 @@ export default function NavBar({ className }: { className?: string }) {
             <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Generative UI">
+        {/* <MenuItem setActive={setActive} active={active} item="Generative UI">
           <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
               title="Cyber Security"
@@ -74,7 +74,7 @@ export default function NavBar({ className }: { className?: string }) {
               description="Displays biological systems from cellular to ecosystem levels dynamically"
             />
           </div>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem setActive={setActive} active={active} item="Projects">
           <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
