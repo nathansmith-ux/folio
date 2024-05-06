@@ -75,7 +75,7 @@ export default function NavBar({ className }: { className?: string }) {
             />
           </div>
         </MenuItem> */}
-        <MenuItem setActive={setActive} active={active} item="Projects">
+        <MenuItem setActive={setActive} active={active} item="Projects & Portfolio">
           <div className="text-sm grid grid-cols-2 gap-10 p-4 rounded-lg">
             <ProductItem
               title="TaiL"
@@ -89,6 +89,18 @@ export default function NavBar({ className }: { className?: string }) {
               src="/schema-forge-assets/schema-forge.webp"
               description="A SaaS product built to help SEOs generate structured data more efficiently"
             />
+            {/* <ProductItem
+              title="SEO Work"
+              href="/projects/seo"
+              src="/portfolio/seo-work.webp"
+              description="A SaaS product built to help SEOs generate structured data more efficiently"
+            />
+            <ProductItem
+              title="Web Development Projects"
+              href="/projects/web-dev"
+              src="/portfolio/webdev-work.webp"
+              description="A SaaS product built to help SEOs generate structured data more efficiently"
+            /> */}
           </div>
         </MenuItem>
         <Link

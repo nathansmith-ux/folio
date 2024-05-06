@@ -16,7 +16,7 @@ export default function MobileModal({ onClose }: MobileModalProps) {
 
   const [isServicesOpen, setServicesOpen] = useState(false)
   const [isProjectOpen, setProjectOpen] = useState(false)
-  const [isGenUiOpen, setGenUiOpen] = useState(false)
+  // const [isGenUiOpen, setGenUiOpen] = useState(false)
 
   const handleServicesOpen = () => {
     setServicesOpen(!isServicesOpen)
@@ -26,9 +26,9 @@ export default function MobileModal({ onClose }: MobileModalProps) {
     setProjectOpen(!isProjectOpen)
   }
 
-  const handleGenUi = () => {
-    setGenUiOpen(!isGenUiOpen)
-  }
+  // const handleGenUi = () => {
+  //   setGenUiOpen(!isGenUiOpen)
+  // }
 
 
   return (
@@ -61,14 +61,14 @@ export default function MobileModal({ onClose }: MobileModalProps) {
               </ul>
             )}
           </li>
-          <li>
+          {/* <li>
             <button onClick={handleGenUi} className="block w-full text-left py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
               <div className="flex justify-between items-center">
                 Generative UI
                 <DownIcon />
               </div>
-            </button>
-            {isGenUiOpen && (
+            </button> */}
+            {/* {isGenUiOpen && (
               <ul className="pl-4">
                 <li>
                   <Link href="/generative-ui/cyber-security" onClick={onClose} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cyber Security</Link>
@@ -77,12 +77,12 @@ export default function MobileModal({ onClose }: MobileModalProps) {
                   <Link href="/generative-ui/life-sciences" onClick={onClose} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Life Sciences</Link>
                 </li>
               </ul>
-            )}
-          </li>
+            )} */}
+          {/* </li> */}
           <li>
             <button onClick={handleProjectOpen} className="block w-full text-left py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
               <div className="flex justify-between items-center">
-                Projects
+                Projects & Portfolio
                 <DownIcon />
               </div>
             </button>

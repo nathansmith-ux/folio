@@ -41,6 +41,7 @@ export default function WebDevPage() {
           subtext="The road to a new digitial reach starts here" 
           words={words}
           cards={false}
+          secondButton={true}
         />
       </AuroraBackground>
     </main>

@@ -14,10 +14,11 @@ interface TypeWriterCtaProps {
   subtext: string
   words: Word[];
   cards: boolean
+  secondButton: boolean
 }
 
 export function TypeWriterCta({ 
-  subtext, words, cards 
+  subtext, words, cards, secondButton
 }: TypeWriterCtaProps
 ) {
   return (
@@ -28,7 +29,7 @@ export function TypeWriterCta({
       <TypewriterEffectSmooth words={words} />
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
         <ElevatorPitchButton />
-        <AboutMeButton />
+        {secondButton && (<AboutMeButton />)}
       </div>
       {cards && (
         <section className="mt-24 flex flex-col items-center">

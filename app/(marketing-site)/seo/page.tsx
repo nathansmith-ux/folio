@@ -15,6 +15,7 @@ export default function SeoPage() {
           subtext="Start Your Organic Journey Today" 
           words={words}
           cards={true}
+          secondButton={true}
         />
       </AuroraBackground>
       <CardGrid 
