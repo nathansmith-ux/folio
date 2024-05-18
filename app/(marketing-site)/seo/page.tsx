@@ -12,11 +12,11 @@ export default function SeoPage() {
     <main>
       <AuroraBackground>
         <TypeWriterCta
+          usedAsCta={false}
           subtext="Start Your Organic Journey Today" 
           words={words}
           cards={true}
           secondButton={true}
-          usedAsCta={false}
         />
       </AuroraBackground>
       <div className="bg-gradient-to-r from-zinc-900 to-zinc-700 py-28 lg:px-20 md:px-10">
