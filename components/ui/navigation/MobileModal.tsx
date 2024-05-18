@@ -103,6 +103,7 @@ export default function MobileModal({ onClose }: MobileModalProps) {
       </ul>
       <div className="flex justify-center mt-12">
         <ContactButton 
+            text="Lets Talk Today"
             link="https://calendly.com/nathanrmsmith/30min"
           />
       </div>
