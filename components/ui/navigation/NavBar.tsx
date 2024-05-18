@@ -109,6 +109,7 @@ export default function NavBar({ className }: { className?: string }) {
           About Me
         </Link>
         <ContactButton 
+          text="Contact Me"
           link="https://calendly.com/nathanrmsmith/30min"
         />
       </Menu>

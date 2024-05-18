@@ -11,16 +11,15 @@ interface TextCenteredProps {
 
 export default function TextCentered({ header, description }: TextCenteredProps) {
   return (
-      <section className="bg-blue-300 lg:pt-20 pb-12 pt-8 md:pt-36 border-b border-black">
-    <div className="px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        <ConsultationButton />
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">{header}</h1>
-        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48">{description}</p>
+      <section className="bg-gradient-to-r from-cyan-300 to-violet-300 lg:pt-28 pb-12 pt-8 md:pt-36 border-b border-black">
+        <div className="px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+        <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none text-zinc-900 md:text-5xl lg:text-6xl">{header}</h1>
+        <p className="mb-8 text-lg font-normal text-zinc-800 lg:text-xl sm:px-16 xl:px-48">{description}</p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <AboutMeButton />
             <ElevatorPitchButton />
         </div>
-        <h2 className="text-gray-900 text-2xl mb-6">Built With Love Using</h2>
+        <h2 className="text-gray-900 text-2xl mb-6">Built With ❤️ Using</h2>
         <ThreeDCardGrid 
           techStacks={techStack}
         />

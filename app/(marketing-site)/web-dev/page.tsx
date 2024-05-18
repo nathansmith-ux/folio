@@ -14,34 +14,23 @@ export default function WebDevPage() {
         header="You've Established Your Vision. We'll Develop It to Scale"
         description="We develop end-to-end solutions for small business owners to help you carve out your piece of the digital world"
       />
-      <AuroraBackground>
+      <div className="bg-gradient-to-r from-zinc-900 to-zinc-700 py-20 lg:px-20 md:px-10">
         <CardGrid 
           header="The Services That We Provide"
           services={services}
         />
-      </AuroraBackground>
-      <CtaImage 
-        header="Your Vision, Our Expertise - Let's Scale To New Heights Together"
-        description="Transform your vision into reality with our expertise in web development – let's create your digital masterpiece together"
-        image="/cta/cta-image.webp"
-        color="bg-blue-500"
-      />
+      </div>
       <CardIconGrid 
         header="Our Process"
         process={process}
-      />
-      <HeroWBullets 
-        image="/cta/minimalistic-hero.webp"
-        header="Web Solutions for Small Businesses"
-        description="Empowering small businesses with custom web applications designed for efficiency and growth"
-        bulletPoints={bulletPoints}
       />
       <AuroraBackground>
         <TypeWriterCta
           subtext="The road to a new digitial reach starts here" 
           words={words}
           cards={false}
-          secondButton={true}
+          secondButton={false}
+          usedAsCta={true}
         />
       </AuroraBackground>
     </main>
