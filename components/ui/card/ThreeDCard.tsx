@@ -13,10 +13,10 @@ interface ThreeDCardProps {
 export function ThreeDCard({ techStack }: ThreeDCardProps) {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="relative border-black bg-white h-24 lg:h-28 lg:w-40 rounded-xl p-2 border flex flex-col items-center md:w-40">
+      <CardBody className="relative border-black bg-gradient-to-r from-zinc-900 to-zinc-700 hover:from-purple-800 hover:to-violet-500 h-24 lg:h-28 lg:w-40 rounded-xl p-2 border flex flex-col items-center md:w-40">
         <CardItem
           translateZ="50"
-          className="text-xl font-bold text-neutral-600"
+          className="text-xl font-bold text-white"
         >
           {techStack}
         </CardItem>

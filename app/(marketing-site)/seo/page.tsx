@@ -16,34 +16,27 @@ export default function SeoPage() {
           words={words}
           cards={true}
           secondButton={true}
+          usedAsCta={false}
         />
       </AuroraBackground>
-      <CardGrid 
-        header="The Services That We Provide"
-        services={services}
-      />
-      <CtaImage 
-        header="Let's Expand Your Business's Digital Reach - Together"
-        description="Unleash your business's potential online, where our joint expertise and your vision come together to create a lasting digital impact."
-        image="/seo-page/seo-services.webp"
-        color="bg-pink-400"
-      />
+      <div className="bg-gradient-to-r from-zinc-900 to-zinc-700 py-28 lg:px-20 md:px-10">
+        <CardGrid 
+          header="The Services That We Provide"
+          services={services}
+        />
+      </div>
       <AuroraBackground>
         <CardIconGrid
           header="Our Process" 
           process={process}
         />
       </AuroraBackground>
-      <HeroWBullets 
-        image="/seo-page/seo-process.webp"
-        header="SEO Services For Small Businesses"
-        description="Elevate your small business in the digital world with our tailored SEO services, designed to enhance your online visibility, attract more traffic, and drive growth"
-        bulletPoints={bulletPoints}
-      />
-      <CtaText 
-        header="Are You Ready To Take Your Business To The Digital World?"
-        description="Let's carve out a piece of the internet for your business"
-      />
+      <div className="bg-gradient-to-r from-violet-400 to-rose-400">
+        <CtaText 
+          header="Are You Ready To Take Your Business To The Digital World?"
+          description="Let's carve out a piece of the internet for your business"
+        />
+      </div>
     </main>
   )
 }
