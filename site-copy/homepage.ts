@@ -12,7 +12,7 @@ export const techStack = [
   {
     h4: "React & Nextjs",
     gradient: "blue",
-    description: "We high-performance web apps with React and Next.js."
+    description: "We build high-performance web apps with React and Next.js."
   },
 ];
 

@@ -49,10 +49,10 @@ const HoverCard = ({ h4, gradient, description }: HoverCardProps) => {
       <div className="mx-auto h-12 w-12 text-white transition-transform duration-300 group-hover:text-white group-hover:scale-110">
         {getIcon(h4)}
       </div>
-      <h4 className="mt-5 text-sm lg:text-md font-medium text-white transition-transform duration-300 group-hover:text-zinc-900">
+      <h4 className="mt-5 text-sm lg:text-md font-medium text-white transition-transform duration-300 group-hover:text-white">
         {h4}
       </h4>
-      <p className="mt-2 text-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <p className="mt-2 text-white text-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         {description}
       </p>
     </div>

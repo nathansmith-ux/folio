@@ -4,15 +4,16 @@ import { HeroHighlightHelper, Highlight } from "@/components/ui/hero/HeroHightli
 import ElevatorPitchButton from "../button/ElevatorPitchButton";
 import WebDevButton from "../button/WebDevButton";
 
-interface HeroHighlightProps {
+interface TextHighlightProps {
   normalText: string
   highlightedText: string
   paragraph?: boolean
   paragraphText?: string 
   ctas?: boolean
+  secondNormalText? : string
 }
 
-export function HeroHighlight({normalText, highlightedText, paragraph, paragraphText, ctas} : HeroHighlightProps ) {
+export function TextHighlight({normalText, highlightedText, secondNormalText} : TextHighlightProps ) {
   return (
     <HeroHighlightHelper>
       <motion.h1
@@ -28,24 +29,14 @@ export function HeroHighlight({normalText, highlightedText, paragraph, paragraph
           duration: 0.5,
           ease: [0.4, 0.0, 0.2, 1],
         }}
-        className="text-2xl px-4 md:text-4xl lg:text-7xl font-bold text-white max-w-7xl leading-relaxed lg:leading-snug text-center mx-auto "
+        className="text-2xl px-4 md:text-4xl lg:text-3xl font-bold text-white max-w-7xl leading-relaxed lg:leading-snug text-center mx-auto "
       >
         {normalText}
         <Highlight className="text-white">
           {highlightedText}
         </Highlight>
+        {secondNormalText}
       </motion.h1>
-      {paragraph && (
-        <p className="flex justify-center mt-4 text-xl max-w-5xl text-center mx-auto text-white">{paragraphText}</p>
-      )}
-      {ctas && (
-        <div className="flex justify-center mt-8">
-          <WebDevButton 
-            text="Let's Have A Conversation"
-            link="https://calendly.com/nathanrmsmith/30min"
-          />
-        </div>
-      )}
     </HeroHighlightHelper>
   );
 }

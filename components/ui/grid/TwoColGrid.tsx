@@ -1,6 +1,7 @@
 import ContactButton from "../button/ContactButton";
 import WebDevButton from "../button/WebDevButton";
 import HoverCard from "../card/HoverCard";
+import ScrollIcon from "../icons/ScrollingIcon";
 
 interface TwoColGridProps {
   h2: string;
@@ -44,6 +45,12 @@ export default function TwoColGrid({ h2, description, secondDescription, h3, h3H
                 text="Our Web Dev Services"
                 link="/web-dev"
               />
+            </div>
+          </div>
+          <div className="lg:pt-32">
+            <div className="flex items-center">
+              <ScrollIcon />
+              <p className="ml-2 text-lg font-semibold	text-zinc-700">Hover To Reveal</p>
             </div>
           </div>
         </div>
