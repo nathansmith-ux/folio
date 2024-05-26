@@ -24,7 +24,7 @@ export default function Home() {
         {/* <AuroraBackground> */}
         <div className="lg:pt-64 lg:pb-14 bg-gradient-to-r from-zinc-900 to-zinc-700">
             <HeroHighlight 
-              normalText="From Startup To Enterprise we're "
+              normalText="From Startup To Enterprise We're "
               highlightedText="Your Marketing Partner"
               paragraph={true}
               paragraphText="Need more than just a plugin agency? Meet the agency designed to take you from inception to enterprise. As you grow, we grow along side you."
